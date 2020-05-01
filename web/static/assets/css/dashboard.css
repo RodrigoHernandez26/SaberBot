@@ -21,9 +21,6 @@ footer{
   
 } */
 
-img{
-    margin-top: 15px;
-}
 h1{
     font-size: 36px;
     
@@ -43,7 +40,7 @@ p{
     padding: 15%;
 }
 
-img{
+#you img{
     border-radius: 15px;
     border: 1px solid gray;
 }
@@ -109,10 +106,10 @@ div.guilds {
     display:table-cell;
     vertical-align:middle;
     text-align:center;
-  }
+}
 
-.line{
-    border: 5px solid #0c0e0f;
-    border-radius: 5px;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+.guilds img{
+  border: 5px solid #0c0e0f;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
