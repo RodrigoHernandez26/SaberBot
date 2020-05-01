@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from settings.db_commands import mysql_command
 
 class Ping(commands.Cog):
 
@@ -14,6 +15,7 @@ class Ping(commands.Cog):
             color = 0x22a7f0
         )
         await ctx.send(embed = ping_embed)
+        mysql_command(f"update status_api set disc = {self.client.latency * 1000} where id = 1")
     
 def setup(client):
     client.add_cog(Ping(client))

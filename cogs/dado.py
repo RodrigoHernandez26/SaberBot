@@ -3,6 +3,8 @@ from discord.ext import commands
 import requests
 import yaml
 import json
+from settings.db_commands import mysql_command
+import time
 
 async def parser(ctx, mult, mod, sinal, resultado):
 
@@ -55,9 +57,16 @@ def api_request(qnt, dado):
     reqData['params']['n'] = str(qnt)
     reqData['params']['max'] = str(dado)
 
+    start = time.time()
+
     response = requests.post('https://api.random.org/json-rpc/2/invoke', json = reqData)
     response.raise_for_status()
     json = response.json()
+
+    done = time.time()
+    delay = (done - start) * 1000
+    mysql_command("update status_api set rand = %d where id = 1" %delay)
+
     data = json['result']['random']['data']
 
     # O Bot limita as requests quando atinge esses valores
@@ -65,6 +74,7 @@ def api_request(qnt, dado):
     if json['result']['bitsLeft'] <= 100 or json['result']['requestsLeft'] <= 10:
         reqKey['API_KEY'] = None
         with open('settings/settings.yaml', 'w') as f: yaml.dump(reqKey, f)
+        mysql_command(f"update status_api set rand = 0 where id = 1")
 
     return data
 

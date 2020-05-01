@@ -13,3 +13,10 @@ create table reset_roles(
     id_role bigint not null,
     primary key (server)
 );
+
+create table status_api(
+	id int not null auto_increment,
+	rand int not null,
+    disc int not null,
+    primary key(id)
+);
