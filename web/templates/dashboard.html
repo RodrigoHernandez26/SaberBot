@@ -9,7 +9,7 @@
 <body>
     <div class="perfil">
         <a href="{{url_for('index')}}">
-            <img src="../static/assets/images/arrow.png" alt="Login" id="arrow">
+            <img src="../static/assets/images/arrow.png" alt="Arrow" id="arrow">
         </a>
         <div class="main">
             <div id="you">
@@ -25,7 +25,7 @@
             <div class= "guilds">
                 <h2>Selecione um servidor</h2>
                     {% for guild in user_guilds %}
-                        {% if guild.owner %}
+                        {% if guild.owner or guild.permissions == 2147483647 %}
                             {% if guild.icon == None %}
                             <div>
                                 <a href="guild/{{guild.id}}" class="guildname">

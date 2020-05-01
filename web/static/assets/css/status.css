@@ -26,6 +26,7 @@ body{
     text-align: center;
     padding: 15%;
     padding-top: 0%;
+    margin-top: -5%;
 }
 
 #Title{
@@ -33,7 +34,7 @@ body{
     color: crimson;
     text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
     text-decoration: none;
-    font-size: 80px;
+    font-size: 90px;
   }
 
   #arrow{

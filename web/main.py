@@ -22,7 +22,7 @@ def invite():
 def guild(guild_id):
     if guild_id == '0':
         return redirect('/login/')
-    return guild_id
+    return render_template('guild.html')
 
 @app.route('/status/')
 def status():
