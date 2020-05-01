@@ -26,9 +26,12 @@ def guild(guild_id):
 
 @app.route('/status/')
 def status():
-    data = mysql_command('select rand, disc from status_api where id = 1', True)
-    print(data[0])
-    return render_template('status.html', random= data[0]['rand'], discord= data[0]['disc'])
+    try:
+        db = True
+        data = mysql_command('select rand, disc from status_api where id = 1', True)
+    except Exception:
+        db = False
+    return render_template('status.html', random= data[0]['rand'], discord= data[0]['disc'], db = db)
 
 @app.route('/dashboard/')
 def dashboard():
