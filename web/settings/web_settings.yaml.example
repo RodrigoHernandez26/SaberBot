@@ -1,15 +1,15 @@
 #Preencha todos os campos antes de executar o main.py
 
 # ID e secret do seu bot https://discordapp.com/developers/applications
-CLIENT_ID: ''
-CLIENT_SECRET: ''
+CLIENT_ID: 
+CLIENT_SECRET: 
 
-SCOPE: '' #Permissões que seu bot irá pedir
-REDIRECT_URI: '' #URI que o discord irá redirecionar após login
+SCOPE:  #Permissões que seu bot irá pedir
+REDIRECT_URI:  #URI que o discord irá redirecionar após login
 
 #CONNECT MySQL (Em bot.sql tem o arquivo para criar o db)
-HOST: ""
-USER: ""
-PASSWORD: ""
-DB: ""
+HOST: 
+USER: 
+PASSWORD: 
+DB: 
 PORT: 
