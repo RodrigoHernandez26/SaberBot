@@ -1,4 +1,4 @@
-create schema botgrandejogos;
+create schema saberbot;
 
 create table pnts(
 	id_pontos int not null auto_increment,

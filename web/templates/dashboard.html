@@ -7,12 +7,21 @@
 </head>
 <body>
 
-    <div class="perfil">
-    <img src="{{avatar_url}}" alt="Avatar">
-    <h1>{{user_info.username}}</h1>
-    <p>Usuário: {{user_info.username}}#{{user_info.discriminator}}</p>
-    <p>Email: {{user_info.email}}</p>
-    <p>ID: {{user_info.id}}</p>
+    <div class= "perfil">
+        <img src="{{avatar_url}}" alt="Avatar">
+        <h1>{{user_info.username}}</h1>
+        <p>Usuário: {{user_info.username}}#{{user_info.discriminator}}</p>
+        <p>Email: {{user_info.email}}</p>
+        <p>ID: {{user_info.id}}</p>
+    </div>
+
+    <div class= "guilds">
+        <h2>Selecione um servidor:</h2>
+        {% for guild in user_guilds %}
+            {% if guild.owner %}
+                <a href="guild/{{guild.id}}">{{guild.name}}</a>
+            {% endif %}
+        {% endfor %}
     </div>
 
     
