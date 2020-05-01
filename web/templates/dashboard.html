@@ -40,23 +40,10 @@
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-            <li></li>
+            <li class="line"></li>
         </div>
 
     </div>
 
-    <div class= "guilds">
-        <h2>Selecione um servidor:</h2>
-        {% for guild in user_guilds %}
-            {% if guild.owner %}
-                {% if guild.icon == None %}
-                    <img src="../static/assets/images/sem-foto.jpg" alt="Icon">
-                {% else %}
-                    <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}" alt="Icon">
-                {% endif %}
-                <a href="guild/{{guild.id}}">{{guild.name}}</a>
-            {% endif %}
-        {% endfor %}
-    </div>
     
 </html>
