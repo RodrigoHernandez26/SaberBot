@@ -40,6 +40,10 @@ def dashboard():
     user_info = OAuth.get_user_info(access_token)
     user_guilds = OAuth.get_user_guilds(access_token)
     avatar_url = f'https://cdn.discordapp.com/avatars/{user_info["id"]}/{user_info["avatar"]}.png?size=256'
+    return dashHome(user_info, user_guilds, avatar_url)
+
+@app.route('/dashboard/home/')
+def dashHome(user_info, user_guilds, avatar_url):
     return render_template('dashboard.html', user_info= user_info, user_guilds= user_guilds, avatar_url = avatar_url)
 
 if (__name__ == "__main__"):
