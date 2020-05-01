@@ -1,0 +1,23 @@
+#Preencha todos os campos antes de executar o main.py
+#Em embeds.py tem todas as mensagens que o bot envia
+
+TOKEN_BOT:  #Token do seu bot https://discordapp.com/developers/applications
+
+LIM_ADD:  #Limite de pontos que podem ser adionados em 1 comando
+
+LIM_MULT:  #Limite do multiplicador de dados
+
+LIM_QNT:  #Limite da quantidade de dados
+
+LIM_DADO:  #Limite do número de lados do dado
+
+#Request post do https://api.random.org
+API_KEY: 
+API_ID: 
+
+#CONNECT MySQL (Em bot.sql tem o arquivo para criar o db)
+HOST: 
+USER: 
+PASSWORD: 
+DB: 
+PORT: 

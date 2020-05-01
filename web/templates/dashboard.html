@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle</title>
+</head>
+<body>
+
+    <h1><img src="{{avatar_url}}" alt="Avatar">{{user_info.username}}#{{user_info.discriminator}}</h1>
+    <p>email: {{user_info.email}}</p>
+    <p>ID: {{user_info.id}}</p>
+    <p>Local: {{user_info.locale}}</p>
+    <p>Verified: {{user_info.verified}}</p>
+
+    <h2>Servidores:</h2>
+    <h3>Dono:</h3>
+
+    {% for guild in user_guilds %}
+        {% if guild.owner %}
+            <p>{{guild.name}} - {{guild.id}} (permission: {{guild.permissions}})</p>
+        {% endif %}
+    {% endfor %}
+
+    <h3>Outros:</h3>
+    {% for guild in user_guilds %}
+        {% if not guild.owner %}
+            <p>{{guild.name}} - {{guild.id}}</p>
+        {% endif %}
+    {% endfor %}
+</html>
