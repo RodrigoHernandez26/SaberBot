@@ -1,13 +1,46 @@
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename= 'css/style.css')}}">
-    <title>Bot Grande Jogos</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="{{url_for('static', filename= 'assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'assets/js/script.js')}}">
+    <title>Bot Saber</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/images/favicon-96x96.png">
 </head>
 <body>
-    <h1>Site do Bot Grande Jogos</h1>
-    <a href="{{url_for('login')}}">Painel de Controle</a>
-    <a href="{{url_for('invite')}}">Convide-me!</a>
+    <header>
+    </header>
+
+    <div class="main">
+        <h1 id="Title">Bot Saber</h1>
+        <div class="login">
+            <div>
+                <a class="fix" href="{{url_for('login')}}">
+                        <span class="text-content"><span>Painel de Controle</span></span>
+                        <img src="../static/assets/images/gear.png" alt="Login">
+                </a>
+            </div>
+            <div>
+                <a class="fix" href="{{url_for('invite')}}">
+                        <span class="text-content"><span>Convite</span></span>
+                        <img src="../static/assets/images/letter.png" alt="Login">
+                </a>
+            </div>
+            <div>
+                <a class="fix" href="{{url_for('invite')}}">
+                        <span class="text-content"><span>Status</span></span>
+                        <img src="../static/assets/images/status.png" alt="Login">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        
+    </footer>
 </body>
 </html>

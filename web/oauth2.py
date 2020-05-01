@@ -1,6 +1,5 @@
 import requests
 import yaml
-import os
 
 class OAuth(object):
 

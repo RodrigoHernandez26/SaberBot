@@ -1,0 +1,41 @@
+html{
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100%;
+    text-align:center;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+
+body{
+  background: #333;
+}
+
+header{
+
+}
+
+footer{
+  
+}
+
+.main{
+  
+}
+
+img{
+    margin-top: 15px;
+}
+h1{
+    font-size: 36px;
+    
+}
+p{
+    font-size: 16px;
+}
+.perfil{
+    background: #202225;
+    border: 1px solid #696969;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+}
