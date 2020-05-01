@@ -9,18 +9,6 @@ body{
     background:#0c0e0f;
 }
 
-/* header{
-
-}
-
-footer{
-  
-}
-
-.main{
-  
-} */
-
 h1{
     font-size: 36px;
     
@@ -37,9 +25,11 @@ p{
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    padding: 15%;
 }
 
+.main{
+  padding: 5%;
+}
 #you img{
     border-radius: 15px;
     border: 1px solid gray;
@@ -112,4 +102,13 @@ div.guilds {
   border: 5px solid #0c0e0f;
   border-radius: 5px;
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+#arrow{
+  text-align: left;
+  vertical-align: super;
+  height: 70px;
+  width: 70px;
+  position: static;
+  margin: 30px;
 }

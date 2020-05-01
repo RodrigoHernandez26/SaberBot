@@ -1,12 +1,27 @@
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Status</title>
+    <link rel="stylesheet" href="../static/assets/css/status.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/images/status.png">
 </head>
 <body>
-    <p>Delay API Random.org: {{random}}</p>
-    <p>Delay API Discord: {{discord}}</p>
-    <p>Db funcionando: {{db}}</p>
+    <div class="main">
+        <a href="{{url_for('index')}}">
+            <img src="../static/assets/images/arrow.png" alt="Login" id="arrow">
+        </a>
+        <div class="position">
+            <h1 id="Title">Status</h1>
+            <p>Delay API Random.org: {{random}}</p>
+            <p>Delay API Discord: {{discord}}</p>
+            {% if db == True %}
+                <p>Data Base Status: ✔</p>
+            {% else %}
+                <p>Data Base Status: ❌</p>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>
