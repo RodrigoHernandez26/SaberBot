@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, session, render_template, url_for
+from flask import Flask, request, redirect, session, render_template, url_for, make_response
 from oauth2 import OAuth
 from settings.db_commands import *
 
@@ -9,21 +9,28 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login/')
 def login():
     return redirect(OAuth.discord_login_url)
 
-@app.route('/invite')
+@app.route('/invite/')
 def invite():
     return redirect('https://discordapp.com/oauth2/authorize?client_id=679153754175701032&scope=bot&permissions=2048')
 
-@app.route('/status')
+@app.route('/dashboard/guild/', defaults= {'guild_id': "0"})
+@app.route('/dashboard/guild/<guild_id>')
+def guild(guild_id):
+    if guild_id == '0':
+        return redirect('/login/')
+    return guild_id
+
+@app.route('/status/')
 def status():
     data = mysql_command('select rand, disc from status_api where id = 1', True)
     print(data[0])
     return render_template('status.html', random= data[0]['rand'], discord= data[0]['disc'])
 
-@app.route('/dashboard')
+@app.route('/dashboard/')
 def dashboard():
     code = request.args.get('code')
     access_token = OAuth.get_access_token(code)

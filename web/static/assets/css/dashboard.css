@@ -1,16 +1,15 @@
 html{
     font-family: 'Open Sans', sans-serif;
     min-height: 100%;
-    text-align:center;
     margin-left: 30%;
     margin-right: 30%;
   }
 
 body{
-  background: #333;
+    background:#0c0e0f;
 }
 
-header{
+/* header{
 
 }
 
@@ -20,7 +19,7 @@ footer{
 
 .main{
   
-}
+} */
 
 img{
     margin-top: 15px;
@@ -33,9 +32,87 @@ p{
     font-size: 16px;
 }
 .perfil{
-    background: #202225;
-    border: 1px solid #696969;
-    color: white;
+    background: #212124;
+    color: #fff;
     font-weight: bold;
+    border: 1px solid #000000;
     border-radius: 15px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    padding: 15%;
+}
+
+img{
+    border-radius: 15px;
+    border: 1px solid gray;
+}
+
+#you{
+    text-align:center;
+}
+
+h2{
+    text-transform: uppercase;
+}
+
+p{  
+    padding: 15px;
+    background: #0c0e0f;
+    border-radius: 15px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+a{
+    color: crimson;
+    text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+/* Effect */
+div.guilds { 
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    text-align:center; 
+  }
+  div.guilds div {
+    width:150px;
+    height:150px;
+    margin-right:1em;
+    position:relative;
+    margin-bottom:1em;
+    display:inline-block;
+  }
+  div.guilds div:hover span.text-content {
+    opacity:1;
+  }
+  span.text-content {
+    position:absolute;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.5);
+    color:white;
+    cursor:pointer;
+    display:table;
+    width:150px;
+    height:150px;
+    opacity:0;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+  }
+  span.text-content span {
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+  }
+
+.line{
+    border: 5px solid #0c0e0f;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }

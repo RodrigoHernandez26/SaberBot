@@ -4,15 +4,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Controle</title>
     <link rel="stylesheet" href="../static/assets/css/dashboard.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/images/botsaber.png">
 </head>
 <body>
-
     <div class="perfil">
-    <img src="{{avatar_url}}" alt="Avatar">
-    <h1>{{user_info.username}}</h1>
-    <p>Usuário: {{user_info.username}}#{{user_info.discriminator}}</p>
-    <p>Email: {{user_info.email}}</p>
-    <p>ID: {{user_info.id}}</p>
+        <div id="you">
+            <img src="{{avatar_url}}" alt="Avatar">
+            <h1>{{user_info.username}}</h1>
+        </div>
+        <br>
+        <h2>Username</h2><p>{{user_info.username}}#{{user_info.discriminator}}</p>
+        <h2>Email</h2><p>{{user_info.email}}</p>
+        <h2>ID</h2><p>{{user_info.id}}</p>
+
+        <br>
+        <div class= "guilds">
+            <h2>Selecione um servidor</h2>
+            <li class="line"></li>
+                {% for guild in user_guilds %}
+                    {% if guild.owner %}
+                        {% if guild.icon == None %}
+                        <div>
+                            <a href="guild/{{guild.id}}" class="guildname">
+                                <span class="text-content"><span>{{guild.name}}</span></span>
+                                <img src="../static/assets/images/botsaber.png" alt="Icon">
+                            </a>
+                        </div>
+                        {% else %}
+                        <div>
+                            <a href="guild/{{guild.id}}" class="guildname">
+                                <span class="text-content"><span>{{guild.name}}</span></span>
+                                <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}" alt="Icon">
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            <li></li>
+        </div>
+
     </div>
 
     

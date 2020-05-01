@@ -62,6 +62,9 @@ a{
   color: white;
   text-decoration: none;
   text-transform: uppercase;
+  color: crimson;
+  text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
+  text-decoration: none;
 }
 
 #Title{
