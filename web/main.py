@@ -1,6 +1,8 @@
 from flask import Flask, request, redirect, session, render_template, url_for
 from oauth2 import OAuth
+from settings.db_commands import *
 
+connect()
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,6 +16,12 @@ def login():
 @app.route('/invite')
 def invite():
     return redirect('https://discordapp.com/oauth2/authorize?client_id=679153754175701032&scope=bot&permissions=2048')
+
+@app.route('/status')
+def status():
+    data = mysql_command('select rand, disc from status_api where id = 1', True)
+    print(data[0])
+    return render_template('status.html', random= data[0]['rand'], discord= data[0]['disc'])
 
 @app.route('/dashboard')
 def dashboard():
