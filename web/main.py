@@ -24,6 +24,10 @@ def guild(guild_id):
         return redirect('/login/')
     return render_template('guild.html')
 
+@app.route('/dashboard/guild/<guild_id>/config')
+def config(guild_id):
+    return render_template('config.html')
+
 @app.route('/status/')
 def status():
     try:

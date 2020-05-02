@@ -12,6 +12,7 @@
     <title>Bot Saber</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="../../static/assets/images/gearconfig.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="../static/assets/css/dashboard.css">
 </head>
 <body>
     <div class="main">
@@ -21,61 +22,162 @@
         <div class="position">
             <img src="../../static/assets/images/guildimageteste.png" alt="Configurações Gerais" id="guildimage">
             <h1 id="Title">Grandes Jogos Reborn</h1>
-            <div>
-                <a class="fix" href="{{url_for('login')}}">
-                        <span class="text-content"><span>Configurações Gerais</span></span>
-                        <img src="../../static/assets/images/gearconfig.png" alt="Configurações Gerais">
-                </a>
-            </div>
-            <div>
-                <a class="fix" href="{{url_for('invite')}}">
-                        <span class="text-content"><span>Comandos</span></span>
-                        <img src="../../static/assets/images/commands.png" alt="Comandos">
-                </a>
-            </div>
-            <div>
-                <a class="fix" href="{{url_for('status')}}">
-                        <span class="text-content"><span>Mensagens</span></span>
-                        <img src="../../static/assets/images/message.png" alt="Mensagens">
-                </a>
-            </div>
-            <div>
-                <a class="fix" href="{{url_for('login')}}">
-                        <span class="text-content"><span>Moderação</span></span>
-                        <img src="../../static/assets/images/admin.png" alt="Moderação">
-                </a>
-            </div>
-            <div>
-                <a class="fix" href="{{url_for('login')}}">
-                        <span class="text-content"><span>Youtube</span></span>
-                        <img src="../../static/assets/images/youtube.png" alt="Youtube">
-                </a>
-            </div>
-            <div>
-                <a class="fix" href="{{url_for('login')}}">
-                        <span class="text-content"><span>Twitch</span></span>
-                        <img src="../../static/assets/images/twitch.png" alt="Twitch">
-                </a>
-            </div>
-            <div>
-                <a class="fix" href="{{url_for('login')}}">
-                        <span class="text-content"><span>Twitter</span></span>
-                        <img src="../../static/assets/images/twitter.png" alt="Twitter">
-                </a>
-            </div>
-            <div>
-                <a class="fix" href="{{url_for('login')}}">
-                        <span class="text-content"><span>Autorole</span></span>
-                        <img src="../../static/assets/images/autorole.png" alt="Autorole">
-                </a>
-            </div>
-            <div>
-                <a class="fix" href="{{url_for('login')}}">
-                        <span class="text-content"><span>Registros de Auditoria</span></span>
-                        <img src="../../static/assets/images/auditoria.png" alt="Registros de Auditoria">
-                </a>
-            </div>
+            <br>
         </div>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>Configurações Gerais <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>Configurações Gerais <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                        <h2>configurar limite dos dados (respeitando os originais)</h2>
+                        <h2>mensagem e valor do limite add</h2>
+                        <h2>baixar informação do bot sobre o server</h2>
+                        <h2>deletar informação do bot sobre o server</h2>
+                        <h2>prefixo</h2>
+                    </div>
+                </div>
+            </label>
+            <br>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>Comandos <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>Comandos <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                        <h2>desativar comandos</h2>
+                        <h2>desativar comandos em chat</h2>
+                        <h2>enviar mensagem / aviso / deletar mensagem</h2>
+                        <p>deletar informação do bot sobre o server</p>
+                        <h2>setadm (?)</h2>
+                    </div>
+                </div>
+            </label>
+            <br>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>Mensagens <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>Mensagens <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                        <h2>alterar embeds</h2>
+                        <p>embeds vao para o db</p>
+                        <h2>log avisos/mute/kick/ban</h2>
+                        <h2>mensagem em chat</h2>
+                        <h2>log vai para o db</h2>
+                    </div>
+                </div>
+            </label>
+            <br>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>Moderação <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>Moderação <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                        <h2>config avisos </h2>
+                        <p>num de avisos pra mute/kick/ban</p>
+                        <p>tempo de mute/ban</p>
+                        <p>tempo dos avisos</p>
+                        <h2>mensagens</h2>
+                        <p>mensagens dos avisos</p>
+                        <p>dm</p>
+                        <p>chat</p>
+                        <p>personalizada</p>
+                        <h2>lista global de users ban</h2>
+                        <p>ban auto e/ou aviso staff chat ou owner dm</p>
+                        <p>ban words</p>
+                    </div>
+                </div>
+            </label>
+            <br>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>youtube <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>youtube <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                    </div>
+                </div>
+            </label>
+            <br>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>twitch <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>twitch <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                    </div>
+                </div>
+            </label>
+            <br>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>twitter <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>twitter <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                    </div>
+                </div>
+            </label>
+            <br>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>autorole <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>autorole <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                        <h2>depois de X tempo</h2>
+                        <h2>depois de enviar mensagem</h2>
+                    </div>
+                </div>
+            </label>
+            <br>
+            <label class="Labels">
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>registro de auditoria <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <h1>registro de auditoria <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
+                    </div>
+                    <div class="content" lang="x-content">
+                    </div>
+                </div>
+            </label>
     </div>
 </body>
 </html>

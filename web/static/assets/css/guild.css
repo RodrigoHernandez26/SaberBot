@@ -36,10 +36,6 @@ h1{
   font-size: 48px;
 }
 
-h2{
-  font-size: 32px;
-}
-
 .fix{
   display: inline-block;
   margin: 25px;
@@ -60,52 +56,10 @@ a{
   text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
   text-decoration: none;
   font-size: 90px;
+  margin-top: -15%;
 }
 
 
-/* Effect */
-div.position { 
-  list-style-type: none;
-  margin:0;
-  padding:0;
-  text-align:center; 
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-top: -10%;
-  margin-bottom: 5%;
-}
-div.position div {
-  width:150px;
-  height:150px;
-  margin-right:1em;
-  position:relative;
-  margin-bottom:1em;
-  display:inline-block;
-}
-div.position div:hover span.text-content {
-  opacity:1;
-}
-span.text-content {
-  position:absolute;
-  top:0;
-  left:0;
-  background:rgba(0,0,0,0.5);
-  color:white;
-  cursor:pointer;
-  display:table;
-  width:150px;
-  height:150px;
-  opacity:0;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  transition: opacity 500ms;
-}
-span.text-content span {
-  display:table-cell;
-  vertical-align:middle;
-  text-align:center;
-}
 
 #arrow{
     text-align: left;
@@ -117,9 +71,77 @@ span.text-content span {
 }
 
 #guildimage{
-  height: 258px;
-  width: 258px;
+  height: 256px;
+  width: 256px;
   border-radius: 15px;
   border: 1px solid gray;
-  margin-top: 5%;
+  margin-top: -5%;
+}
+
+/* Buttom */
+.control{
+  display:none !important;
+}
+* [lang=x-show],
+.show{
+  display:block !important;
+  max-height:none !important;
+}
+* [lang=x-content],
+.content{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 1s;
+}
+* [lang=x-control]:checked + [lang=x-container] [lang=x-show],
+.control:checked + .container .show{
+  display:none !important;
+}
+* [lang=x-control]:checked + [lang=x-container] [lang=x-hide],
+.control:checked + .container .hide{
+  display:block !important;
+  max-height:none !important;
+}
+* [lang=x-control]:checked + [lang=x-container] [lang=x-content],
+.control:checked + .container .content{
+  max-height:600px !important;
+}
+
+.ecxshow{
+  display:none !important;
+}
+.ecxcontent{
+  max-height:none;
+}
+
+.buttom{
+  font-size: 70px;
+}
+
+.Labels *{
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.Labels h1{
+  font-size: 36px;
+  text-transform: uppercase;
+  font-family: Impact;
+}
+
+.Labels h2{
+  padding: 15px;
+  font-size: 24px;
+  background: #0c0e0f;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.Labels p{
+  padding: 10px;
+  font-size: 24px;
+  background: #0c0e0f;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  margin-left: 15%;
 }
