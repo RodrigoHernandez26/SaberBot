@@ -1,6 +1,6 @@
 html{
     font-family: 'Open Sans', sans-serif;
-    min-height: 100%;
+    margin: 5%;
     margin-left: 30%;
     margin-right: 30%;
   }
@@ -112,4 +112,45 @@ div.guilds {
   width: 70px;
   position: static;
   margin: 30px;
+}
+
+/* Buttom */
+.control{
+  display:none !important;
+}
+* [lang=x-show],
+.show{
+  display:block !important;
+  max-height:none !important;
+}
+* [lang=x-content],
+.content{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 1s;
+}
+* [lang=x-control]:checked + [lang=x-container] [lang=x-show],
+.control:checked + .container .show{
+  display:none !important;
+}
+* [lang=x-control]:checked + [lang=x-container] [lang=x-hide],
+.control:checked + .container .hide{
+  display:block !important;
+  max-height:none !important;
+}
+* [lang=x-control]:checked + [lang=x-container] [lang=x-content],
+.control:checked + .container .content{
+  max-height:400px !important;
+}
+
+.ecxshow{
+  display:none !important;
+}
+.ecxcontent{
+  max-height:none;
+}
+
+.buttom{
+  font-size: 70px;
+  text-align: center;
 }

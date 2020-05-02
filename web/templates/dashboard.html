@@ -5,6 +5,7 @@
     <title>Painel de Controle</title>
     <link rel="stylesheet" href="../static/assets/css/dashboard.css">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/images/gear.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="../static/assets/css/dashboard.css">
 </head>
 <body>
     <div class="perfil">
@@ -16,12 +17,23 @@
                 <img src="{{avatar_url}}" alt="Avatar">
                 <h1>{{user_info.username}}</h1>
             </div>
-            <br>
-            <h2>Username</h2><p>{{user_info.username}}#{{user_info.discriminator}}</p>
-            <h2>Email</h2><p>{{user_info.email}}</p>
-            <h2>ID</h2><p>{{user_info.id}}</p>
-
-            <br>
+            <label>
+                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                <div class="container" lang="x-container">
+                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                    </div>
+                    <div class="content" lang="x-content">
+                        <h2>Username</h2><p>{{user_info.username}}#{{user_info.discriminator}}</p>
+                        <h2>Email</h2><p>{{user_info.email}}</p>
+                        <h2>ID</h2><p>{{user_info.id}}</p>
+                    </div>
+                </div>
+            </label>
+            <br><br>
             <div class= "guilds">
                 <h2>Selecione um servidor</h2>
                     {% for guild in user_guilds %}

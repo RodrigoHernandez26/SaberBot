@@ -14,12 +14,15 @@
         </a>
         <div class="position">
             <h1 id="Title">Status</h1>
-            <p>Delay API Random.org: {{random}}</p>
-            <p>Delay API Discord: {{discord}}</p>
+            <h2>Delay API Random.org</h2>
+            <p>{{random}}</p>
+            <h2>Delay API Discord</h2>
+            <p>{{discord}}</p>
+            <h2>Data Base Status</h2>
             {% if db == True %}
-                <p>Data Base Status: ✔</p>
+                <p>✔ Online</p>
             {% else %}
-                <p>Data Base Status: ❌</p>
+                <p>❌ Offline</p>
             {% endif %}
         </div>
     </div>

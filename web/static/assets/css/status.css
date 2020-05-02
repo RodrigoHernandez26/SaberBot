@@ -23,7 +23,6 @@ body{
 }
 
 .position{
-    text-align: center;
     padding: 15%;
     padding-top: 0%;
     margin-top: -5%;
@@ -35,6 +34,7 @@ body{
     text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
     text-decoration: none;
     font-size: 90px;
+    text-align: center;
   }
 
   #arrow{
@@ -50,6 +50,15 @@ h1{
     font-size: 48px;
   }
 
-p{
-    text-transform: uppercase;
+
+p{  
+  padding: 15px;
+  background: #0c0e0f;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  text-transform: uppercase;
+}
+
+h2{
+  text-transform: uppercase;
 }

@@ -3,8 +3,8 @@
 html{
     font-family: 'Open Sans', sans-serif;
     margin: 5%;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 30%;
+    margin-right: 30%;
   }
 
 body{
@@ -72,6 +72,7 @@ div.position {
   margin-left: 15%;
   margin-right: 15%;
   margin-top: -10%;
+  margin-bottom: 5%;
 }
 div.position div {
   width:150px;
@@ -113,4 +114,12 @@ span.text-content span {
     width: 70px;
     position: static;
     margin: 30px;
+}
+
+#guildimage{
+  height: 258px;
+  width: 258px;
+  border-radius: 15px;
+  border: 1px solid gray;
+  margin-top: 5%;
 }
