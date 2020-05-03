@@ -18,7 +18,7 @@ class Add(commands.Cog):
     @commands.command()
     async def add(self, ctx, ponto, nome):
 
-        with open('settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
+        with open('./bot/settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
 
         nome = nome.lower().capitalize()
 

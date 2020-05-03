@@ -16,7 +16,7 @@ def login():
 
 @app.route('/invite/')
 def invite():
-    return redirect('https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=2048')
+    return redirect('https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=8')
 
 @app.route('/dashboard/guild/', defaults= {'guild_id': "0"})
 @app.route('/dashboard/guild/<guild_id>')
