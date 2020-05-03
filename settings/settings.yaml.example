@@ -3,6 +3,8 @@
 
 TOKEN_BOT:  #Token do seu bot https://discordapp.com/developers/applications
 
+PREFIX:  #Prefixo dos comandos do bot
+
 LIM_ADD:  #Limite de pontos que podem ser adionados em 1 comando
 
 LIM_MULT:  #Limite do multiplicador de dados

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router()
-const controller = require('../controllers/product-controller')
+const controller = require('../controllers/guild-controller')
 
 router.get('/', controller.get)
 router.post('/', controller.post)
-router.post('/:id', controller.put)
-router.delete('/:id', controller.delete)
- 
+router.put('/', controller.put)
+router.delete('/', controller.delete)
+
 module.exports = router;

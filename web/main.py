@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, session, render_template, url_for, make_response
 from oauth2 import OAuth
-from settings.db_commands import *
+from settings.db_commands import connect, mysql_command
 
 connect()
 app = Flask(__name__)

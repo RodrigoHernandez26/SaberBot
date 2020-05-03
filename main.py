@@ -23,6 +23,7 @@ except Exception:
 
 try:
     assert data['TOKEN_BOT'] != None
+    assert data['PREFIX'] != None
     assert data['API_KEY'] != None
     assert data['API_ID'] != None
     assert data['LIM_ADD'] != None
@@ -39,7 +40,7 @@ except Exception:
     print('Complete todos os valores em ./settings/settings.yaml')
     sys.exit()
 
-client = commands.Bot(command_prefix= '?', help_command= None)
+client = commands.Bot(command_prefix= data['PREFIX'], help_command= None)
 
 @client.command()
 async def load(ctx, extension):
