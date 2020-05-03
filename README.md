@@ -34,7 +34,7 @@ Todos os pacotes do pip estão em `./bot/requirements.txt` e os pacotes do npm e
 ## Criação de arquivos
 Antes de iniciar a hospedagem, você precisa criar 3 arquivos `settings.yaml` em `./bot/settings`, `./api`, `./web/settings`. Em cada uma dessas páginas, tem um `settings.yaml.example` que você deve usar como padrão para cada `settings.yaml`.
 
-A query de criação do MySQL está em `/settings/bot.sql`.
+A query de criação do MySQL está em `./bot/settings/bot.sql`.
 
 ## Autor
 * [Lucas Módolo](https://github.com/LucasModolo22)
