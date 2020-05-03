@@ -56,9 +56,12 @@ p{
   background: #0c0e0f;
   border-radius: 15px;
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  text-transform: uppercase;
 }
 
 h2{
+  text-transform: uppercase;
+}
+
+.uppsercase{
   text-transform: uppercase;
 }
