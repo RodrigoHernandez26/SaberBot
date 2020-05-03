@@ -160,3 +160,7 @@ div.guilds {
   text-align: center;
   color: #0c0e0f;
 }
+.imgguild{
+  height: 128px;
+  width: 128px;
+}
