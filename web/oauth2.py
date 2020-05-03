@@ -3,7 +3,7 @@ import yaml
 
 class OAuth(object):
 
-    with open('web/settings/web_settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
+    with open('web/settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
 
     CLIENT_ID = settings['CLIENT_ID']
     CLIENT_SECRET = settings['CLIENT_SECRET']
