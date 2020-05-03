@@ -2,10 +2,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Controle</title>
+    <title>Painel de Controle - {{BotName}}</title>
     <link rel="stylesheet" href="{{url_for('static', filename= 'assets/css/dashboard.css')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/gear.png')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="../static/assets/css/dashboard.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/gearicon.png')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
 </head>
 <body>
@@ -40,7 +40,7 @@
                     {% for guild in user_guilds %}
                         {% if guild.owner or guild.permissions == 2147483647 %}
                             <div>
-                                <a href="/dashboard/guild/{{guild.id}}" class="guildname">
+                                <a href="/dashboard/guild/{{guild.id}}/{{guild.name}}" class="guildname">
                                     <span class="text-content"><span>{{guild.name}}</span></span>
                                     {% if guild.icon == None %}
                                     <img src="{{url_for('static', filename= 'assets/images/botsaber.png')}}" alt="Icon">

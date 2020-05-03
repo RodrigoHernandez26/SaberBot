@@ -2,15 +2,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status</title>
-    <link rel="stylesheet" href="../static/assets/css/status.css">
+    <title>Status - {{BotName}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename= 'assets/css/status.css')}}">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/images/status.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/statusicon.png')}}">
 </head>
 <body>
     <div class="main">
         <a href="{{url_for('index')}}">
-            <img src="../static/assets/images/arrow.png" alt="Arrow" id="arrow">
+            <img src="{{url_for('static', filename= 'assets/images/arrow.png')}}" alt="Arrow" id="arrow">
         </a>
         <div class="position">
             <h1 id="Title">Status</h1>

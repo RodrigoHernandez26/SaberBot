@@ -3,8 +3,8 @@
 html{
     font-family: 'Open Sans', sans-serif;
     margin: 5%;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 29%;
+    margin-right: 29%;
   }
 
 body{
@@ -46,7 +46,7 @@ h1{
   margin-left: 5%;
   margin-right: 5%;
   padding: 15px;
-  margin-top: -15%;
+  margin-top: 0px;
 }
 
 
@@ -150,4 +150,19 @@ h1{
 
 .buttom:hover{
   text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
+}
+
+
+#SaberBot{
+  font-family: "Bangers";
+  color: crimson;
+  text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
+  text-decoration: none;
+  font-size: 80px;
+  margin-bottom: 0px;
+  margin-top: -11%;
+}
+
+.Initial{
+  font-size: 100px;
 }

@@ -7,31 +7,31 @@
     <meta http-equiv="Expires" content="0" />
     <link rel="stylesheet" href="{{url_for('static', filename= 'assets/css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename= 'assets/js/script.js')}}">
-    <title>SaberBot</title>
+    <title>{{BotName}}</title>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/images/botsaber.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/SB.png')}}">
 </head>
 <body>
     
     <div class="main">
-        <h1 id="Title">Saber Bot</h1>
+        <h1 id="Title"><span class="Initial">S</span>aber<span class="Initial">B</span>ot</h1>
         <div class="login">
             <div>
                 <a class="fix" href="{{url_for('login')}}">
                         <span class="text-content"><span>Painel de Controle</span></span>
-                        <img src="../static/assets/images/gear.png" alt="Login">
+                        <img src="{{url_for('static', filename= 'assets/images/gear.png')}}" alt="Login">
                 </a>
             </div>
             <div>
                 <a class="fix" href="{{url_for('invite')}}">
                         <span class="text-content"><span>Convite</span></span>
-                        <img src="../static/assets/images/letter.png" alt="Convite">
+                        <img src="{{url_for('static', filename= 'assets/images/letter.png')}}" alt="Convite">
                 </a>
             </div>
             <div>
                 <a class="fix" href="{{url_for('status')}}">
                         <span class="text-content"><span>Status</span></span>
-                        <img src="../static/assets/images/status.png" alt="Status">
+                        <img src="{{url_for('static', filename= 'assets/images/status.png')}}" alt="Status">
                 </a>
             </div>
         </div>

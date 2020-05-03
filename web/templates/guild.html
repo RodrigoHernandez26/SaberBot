@@ -9,17 +9,18 @@
     <meta http-equiv="Expires" content="0" />
     <link rel="stylesheet" href="{{url_for('static', filename= 'assets/css/guild.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename= 'assets/js/script.js')}}">
-    <title>Bot Saber</title>
+    <title>Guild - {{BotName}}</title>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="../../static/assets/images/gearconfig.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="../static/assets/css/dashboard.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/gearconfigicon.png')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 </head>
 <body>
     <div class="main">
         <a href="{{url_for('dashHome')}}">
-            <img src="../../static/assets/images/arrow.png" alt="Arrow" id="arrow">
+            <img src="{{url_for('static', filename= 'assets/images/arrow.png')}}" alt="Arrow" id="arrow">
         </a>
         <div class="position">
+            <h1 id="SaberBot"><span class="Initial">S</span>aber<span class="Initial">B</span>ot</h1>
             <h1 id="Title">Grandes Jogos Reborn</h1>
         </div>
         <div class="cofig">
