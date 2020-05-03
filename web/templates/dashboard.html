@@ -3,15 +3,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Controle</title>
-    <link rel="stylesheet" href="../static/assets/css/dashboard.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/images/gear.png">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'assets/css/dashboard.css')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/gear.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="../static/assets/css/dashboard.css">
 
 </head>
 <body>
     <div class="perfil">
         <a href="{{url_for('index')}}">
-            <img src="../static/assets/images/arrow.png" alt="Arrow" id="arrow">
+            <img src="{{url_for('static', filename= 'assets/images/arrow.png')}}" alt="Arrow" id="arrow">
         </a>
         <div class="main">
             <div id="you">
@@ -43,7 +43,7 @@
                                 <a href="/dashboard/guild/{{guild.id}}" class="guildname">
                                     <span class="text-content"><span>{{guild.name}}</span></span>
                                     {% if guild.icon == None %}
-                                    <img src="../static/assets/images/botsaber.png" alt="Icon">
+                                    <img src="{{url_for('static', filename= 'assets/images/botsaber.png')}}" alt="Icon">
                                     {% else %}
                                     <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}" alt="Icon">
                                     {% endif %}
