@@ -2,7 +2,7 @@
 SaberBot é um bot brasileiro de moderação para o Discord!
 
 ## Como adicionar ao seu servidor:
-Você pode adicionar o SaberBot ao seu server clicando [aqui](https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=2048).
+Você pode adicionar o SaberBot ao seu server clicando [aqui](https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=8).
 
 ## Pré-requisitos:
 Utilizamos o Windows 10, talvez não funcione em outros OS.
@@ -14,7 +14,7 @@ Utilizamos o Windows 10, talvez não funcione em outros OS.
 * MongoDB
 * MySQL
 ```
-Todos os pacotes do pip estão em `requirements.txt` e o `package.json` está dentro da pasta `api`.
+Todos os pacotes do pip estão em `./bot/requirements.txt` e os pacotes do npm estão em `./api/package.json`.
 
 ## Instalação
 1. [Python](https://www.python.org/downloads/)
@@ -24,7 +24,7 @@ Todos os pacotes do pip estão em `requirements.txt` e o `package.json` está de
     ```
     pip install -r requirements.txt
     ```
-5. Para instalar as dependencias da API (`package.json` está dentro da pasta `api`):
+5. Para instalar as dependencias da API:
     ```
     npm install
     ```
@@ -32,7 +32,7 @@ Todos os pacotes do pip estão em `requirements.txt` e o `package.json` está de
 7. [MySQL](https://www.mysql.com/downloads/)
 
 ## Criação de arquivos
-Antes de iniciar a hospedagem, você precisa criar 3 arquivos `settings.yaml` em `/settings`, `/api`, `/web/settings`. Em cada uma dessas páginas, tem um `settings.yaml.example` que você deve usar como padrão para cada `settings.yaml`.
+Antes de iniciar a hospedagem, você precisa criar 3 arquivos `settings.yaml` em `./bot/settings`, `./api`, `./web/settings`. Em cada uma dessas páginas, tem um `settings.yaml.example` que você deve usar como padrão para cada `settings.yaml`.
 
 A query de criação do MySQL está em `/settings/bot.sql`.
 

@@ -50,7 +50,7 @@ def api_request(qnt, dado):
                 "id": 13058
             }
 
-    with open('settings/settings.yaml', 'r') as f: reqKey = yaml.load(f, Loader= yaml.FullLoader)
+    with open('./bot/settings/settings.yaml', 'r') as f: reqKey = yaml.load(f, Loader= yaml.FullLoader)
 
     reqData['params']['apiKey'] = reqKey['API_KEY']
     reqData['id'] = reqKey['API_ID']
@@ -73,7 +73,7 @@ def api_request(qnt, dado):
     # Para desativar essa função é só apagar essas linhas do if abaixo ou o comando que escreve no arquivo settings.yaml
     if json['result']['bitsLeft'] <= 100 or json['result']['requestsLeft'] <= 10:
         reqKey['API_KEY'] = None
-        with open('settings/settings.yaml', 'w') as f: yaml.dump(reqKey, f)
+        with open('./bot/settings/settings.yaml', 'w') as f: yaml.dump(reqKey, f)
         mysql_command(f"update status_api set rand = 0 where id = 1")
 
     return data
@@ -146,7 +146,7 @@ class Dado(commands.Cog):
         except ValueError:
             return
 
-        with open('settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
+        with open('./bot/settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
 
         if int(mult) > settings['LIM_MULT'] or int(qnt) > settings['LIM_QNT'] or int(dado) > settings['LIM_DADO']:
             return

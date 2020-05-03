@@ -15,7 +15,7 @@ except Exception:
     sys.exit()
 
 try:
-    with open('settings/settings.yaml', 'r') as f: data = yaml.load(f, Loader= yaml.FullLoader)
+    with open('./bot/settings/settings.yaml', 'r') as f: data = yaml.load(f, Loader= yaml.FullLoader)
 
 except Exception:
     print('Não foi encontrado o arquivo settings.yaml\nCrie um igual ao ./settings/settings.yaml.example')
@@ -57,17 +57,18 @@ async def reload(ctx, extension):
 
 @client.event
 async def on_command_error(ctx, error):
+    print(error)
     if isinstance(error, CommandNotFound):
         return
 
 try:
-    assert len(os.listdir('./cogs')) == 0
+    assert len(os.listdir('./bot/cogs')) == 0
     print('Nenhum comando criado em ./cogs')
     sys.exit()
 
 except Exception:
     cont = 1
-    for filename in os.listdir('./cogs'):
+    for filename in os.listdir('./bot/cogs'):
         if filename.endswith('.py'):
 
             try:

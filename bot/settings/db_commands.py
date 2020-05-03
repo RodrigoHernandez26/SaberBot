@@ -3,7 +3,7 @@ import yaml
 
 def connect():
 
-    with open('settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
+    with open('./bot/settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
 
     global connection
     connection = MySQLdb.connect(settings['HOST'], settings['USER'], settings['PASSWORD'], settings['DB'], settings['PORT'])
