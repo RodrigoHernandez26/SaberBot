@@ -42,6 +42,3 @@ exports.deleteGuild = (req, res, next) => {
         res.status(400).send(e);
     })
 };
-
-//req.body => no json
-//req.params => na url

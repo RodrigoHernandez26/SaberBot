@@ -40,7 +40,7 @@
                     {% for guild in user_guilds %}
                         {% if guild.owner or guild.permissions == 2147483647 %}
                             <div>
-                                <a href="guild/{{guild.id}}" class="guildname">
+                                <a href="/dashboard/guild/{{guild.id}}" class="guildname">
                                     <span class="text-content"><span>{{guild.name}}</span></span>
                                     {% if guild.icon == None %}
                                     <img src="../static/assets/images/botsaber.png" alt="Icon">

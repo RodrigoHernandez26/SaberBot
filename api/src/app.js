@@ -21,6 +21,3 @@ app.unsubscribe(bodyParser.urlencoded({ extended: false }));
 app.use('/', guildRoute);
 
 module.exports = app;
-
-//Get pega as configurações do site e configura o bot
-//Post pega as configurações do bot e mostra no site

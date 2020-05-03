@@ -45,14 +45,16 @@ def dashboard():
 
     # token = requests.post('http://127.0.0.1:3000/token/', json= {"access_token": access_token}).json()['token']
 
+    global user_info
     user_info = OAuth.get_user_info(access_token)
+    global user_guilds
     user_guilds = OAuth.get_user_guilds(access_token)
-
+    global avatar_url
     avatar_url = f'https://cdn.discordapp.com/avatars/{user_info["id"]}/{user_info["avatar"]}.png?size=256'
-    return dashHome(user_info, user_guilds, avatar_url)
+    return dashHome()
 
 @app.route('/dashboard/home/')
-def dashHome(user_info, user_guilds, avatar_url):
+def dashHome():
     return render_template('dashboard.html', user_info= user_info, user_guilds= user_guilds, avatar_url = avatar_url)
 
 if (__name__ == "__main__"):
