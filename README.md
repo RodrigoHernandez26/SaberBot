@@ -2,7 +2,7 @@
 SaberBot é um bot brasileiro de moderação para o Discord!
 
 ## Como adicionar ao seu servidor:
-Você pode adicionar o SaberBot ao seu server clicando [aqui](https://discordapp.com/oauth2/authorize?client_id=679153754175701032&scope=bot&permissions=2048).
+Você pode adicionar o SaberBot ao seu server clicando [aqui](https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=2048).
 
 ## Pré-requisitos:
 Utilizamos o Windows 10, talvez não funcione em outros OS.
