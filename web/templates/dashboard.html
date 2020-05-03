@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/assets/css/dashboard.css">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/assets/images/gear.png">
     <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="../static/assets/css/dashboard.css">
+
 </head>
 <body>
     <div class="perfil">
@@ -38,21 +39,16 @@
                 <h2>Selecione um servidor</h2>
                     {% for guild in user_guilds %}
                         {% if guild.owner or guild.permissions == 2147483647 %}
-                            {% if guild.icon == None %}
                             <div>
                                 <a href="guild/{{guild.id}}" class="guildname">
                                     <span class="text-content"><span>{{guild.name}}</span></span>
+                                    {% if guild.icon == None %}
                                     <img src="../static/assets/images/botsaber.png" alt="Icon">
-                                </a>
-                            </div>
-                            {% else %}
-                            <div>
-                                <a href="guild/{{guild.id}}" class="guildname">
-                                    <span class="text-content"><span>{{guild.name}}</span></span>
+                                    {% else %}
                                     <img src="https://cdn.discordapp.com/icons/{{guild.id}}/{{guild.icon}}" alt="Icon">
+                                    {% endif %}
                                 </a>
                             </div>
-                            {% endif %}
                         {% endif %}
                     {% endfor %}
             </div>
