@@ -1,3 +1,5 @@
+global.SALT_KEY = ''
+
 module.exports = {
     connectionStrig = ''
 }

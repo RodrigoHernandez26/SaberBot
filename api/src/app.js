@@ -18,7 +18,7 @@ const guildRoute = require('./routes/guild-route');
 app.use(bodyParser.json());
 app.unsubscribe(bodyParser.urlencoded({ extended: false }));
 
-app.use('/guild', guildRoute);
+app.use('/', guildRoute);
 
 module.exports = app;
 

@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, session, render_template, url_for, make_response
 from oauth2 import OAuth
 from settings.db_commands import connect, mysql_command
+import requests
 
 connect()
 app = Flask(__name__)
@@ -41,8 +42,12 @@ def status():
 def dashboard():
     code = request.args.get('code')
     access_token = OAuth.get_access_token(code)
+
+    token = requests.post('http://127.0.0.1:3000/token/', json= {"access_token": access_token}).json()['token']
+
     user_info = OAuth.get_user_info(access_token)
     user_guilds = OAuth.get_user_guilds(access_token)
+
     avatar_url = f'https://cdn.discordapp.com/avatars/{user_info["id"]}/{user_info["avatar"]}.png?size=256'
     return dashHome(user_info, user_guilds, avatar_url)
 

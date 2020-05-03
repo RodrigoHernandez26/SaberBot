@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const Guild = mongoose.model('Guild');
+const authService = require('../services/auth-sevice')
 
-exports.get = (req, res, next) => {
+exports.postToken = async (req, res, next) => {
+    res.status(200).json({token: await authService.generateToken(req.body.access_token)});
+}
+
+exports.getGuild = (req, res, next) => {
     Guild.find({
         guildID: req.body.guildID
     }).then(data => {
@@ -11,7 +16,7 @@ exports.get = (req, res, next) => {
     })
 };
 
-exports.post = (req, res, next) => {
+exports.postGuild = (req, res, next) => {
     let guild = new Guild(req.body);
     guild.save().then(x => {
         res.status(201).send({ message: "Server cadastrado com sucesso!"});
@@ -20,7 +25,7 @@ exports.post = (req, res, next) => {
     });
 };
 
-exports.put = (req, res, next) => {
+exports.putGuild = (req, res, next) => {
     Guild.replaceOne({guildID: req.body.guildID}, req.body)
     .then(data => {
         res.status(200).send({ message: "Server atualizado com sucesso!", data: req.body});
@@ -29,7 +34,7 @@ exports.put = (req, res, next) => {
     })
 };
 
-exports.delete = (req, res, next) => {
+exports.deleteGuild = (req, res, next) => {
     Guild.deleteOne({guildID: req.body.guildID})
     .then(x => {
         res.status(201).send({message: "Server removido com sucesso!"});
