@@ -10,7 +10,7 @@ BotName = "SaberBot"
 
 @app.route('/')
 def index():
-    return render_template('index.html', BotName = BotName)
+    return render_template('index.html', BotName= BotName)
 
 @app.route('/login/')
 def login():
@@ -25,7 +25,7 @@ def invite():
 def guild(guild_id, guild_name):
     if guild_id == '0':
         return redirect('/login/')
-    return render_template('guild.html', BotName = BotName)
+    return render_template('guild.html', BotName= BotName, guild_name= guild_name)
 
 @app.route('/status/')
 def status():

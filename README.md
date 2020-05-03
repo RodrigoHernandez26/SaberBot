@@ -1,4 +1,4 @@
-# Saber-Bot
+# SaberBot
 SaberBot é um bot brasileiro de moderação para o Discord!
 
 ## Como adicionar ao seu servidor:
@@ -41,4 +41,4 @@ A query de criação do MySQL está em `./bot/settings/bot.sql`.
 * [Rodrigo Hernandez](https://github.com/RodrigoHernandez26)
 
 ## Licença
-Esse projeto está licenciado sob a [MIT- License](https://github.com/RodrigoHernandez26/Saber-Bot/blob/master/LICENSE).
+Esse projeto está licenciado sob a [MIT License](https://github.com/RodrigoHernandez26/Saber-Bot/blob/master/LICENSE).
