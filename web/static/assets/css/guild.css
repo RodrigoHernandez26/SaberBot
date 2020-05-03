@@ -47,6 +47,7 @@ h1{
   margin-left: 5%;
   margin-right: 5%;
   padding: 15px;
+  margin-top: -15%;
 }
 
 
@@ -146,4 +147,8 @@ h1{
 .configimage{
   height: 36px;
   width: 36px;
+}
+
+.buttom:hover{
+  text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
 }

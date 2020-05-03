@@ -43,7 +43,7 @@ def dashboard():
     code = request.args.get('code')
     access_token = OAuth.get_access_token(code)
 
-    token = requests.post('http://127.0.0.1:3000/token/', json= {"access_token": access_token}).json()['token']
+    # token = requests.post('http://127.0.0.1:3000/token/', json= {"access_token": access_token}).json()['token']
 
     user_info = OAuth.get_user_info(access_token)
     user_guilds = OAuth.get_user_guilds(access_token)
