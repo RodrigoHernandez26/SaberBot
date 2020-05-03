@@ -10,17 +10,15 @@ const router = express.Router();
 mongoose.connect(settings.connectionStrig)
 
 //Models
-const Product = require('./models/product');
+const Guild = require('./models/guild-model');
 
 //Rote
-const indexRoute = require('./routes/index-route');
-const productRoute = require('./routes/product-route');
+const guildRoute = require('./routes/guild-route');
 
 app.use(bodyParser.json());
 app.unsubscribe(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', indexRoute);
-app.use('/products', productRoute);
+app.use('/guild', guildRoute);
 
 module.exports = app;
 
