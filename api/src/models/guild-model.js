@@ -7,21 +7,6 @@ const schema = new Schema({
         required: true,
         unique: true
     },
-    limAdd: {
-        type: Number,
-        required: false,
-        default: 10
-    },
-    limQnt: {
-        type: Number,
-        required: false,
-        default: 30
-    },
-    limDado: {
-        type: Number,
-        required: false,
-        default: 100
-    },
     addLim: {
         type: Number,
         required: false,

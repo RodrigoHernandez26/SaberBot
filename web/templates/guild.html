@@ -47,9 +47,9 @@
                     <div class="content" lang="x-content">
                         <h2>prefixo</h2>
                         <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-                        <h2>configurar limite dos dados (respeitando os originais)</h2>
-                        <h2>mensagem e valor do limite add</h2>
+                        <i class="fa fa-download" aria-hidden="true"></i>
                         <h2>baixar informação do bot sobre o server</h2>
+                        <i class="fa fa-crosshairs" aria-hidden="true"></i>
                         <h2>deletar informação do bot sobre o server</h2>
                     </div>
                 </div>
@@ -65,18 +65,29 @@
                         <h1><i class="fa fa-warning" aria-hidden="true"></i> Moderação <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
                     </div>
                     <div class="content" lang="x-content">
-                        <h2>config avisos </h2>
-                        <p>num de avisos pra mute/kick/ban</p>
-                        <p>tempo de mute/ban</p>
-                        <p>tempo dos avisos</p>
+                        <h2>Configuração de Avisos </h2>
+                        <h4>Números de avisos para</h4>
+                        <h4>Mute</h4>
+                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
+                        <h4>Kick</h4>
+                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
+                        <h4>Ban</h4>
+                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
+                        <h4>Tempo de mute</h4>
+                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
+                        <h4>Duração dos avisos</h4>
+                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
                         <h2>mensagens</h2>
                         <p>mensagens dos avisos</p>
+                        <!-- Checkbox -->
                         <p>dm</p>
                         <p>chat</p>
-                        <p>personalizada</p>
-                        <h2>lista global de users ban</h2>
-                        <p>ban auto e/ou aviso staff chat ou owner dm</p>
-                        <p>ban words</p>
+                        <!-- Checkbox -->
+                        <h2>SaberBot Ban List</h2>
+                        <p>ban auto e/ou aviso staff chat</p>
+
+                        <h2>ban words</h2>
+                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
                     </div>
                 </div>
             </label>
@@ -91,33 +102,15 @@
                         <h1><i class="fa fa-code" aria-hidden="true"></i> Comandos <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
                     </div>
                     <div class="content" lang="x-content">
+                        <!-- mesma ideia do ban words -->
                         <h2>desativar comandos</h2>
                         <h2>desativar comandos em chat</h2>
-                        <h2>enviar mensagem / aviso / deletar mensagem</h2>
-                        <p>deletar informação do bot sobre o server</p>
-                        <h2>setadm (?)</h2>
+                        <!-- roles do server -->
+                        <h2>setadm</h2>
                     </div>
                 </div>
             </label>
             <br>
-            <label class="Labels">
-                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
-                <div class="container" lang="x-container">
-                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-wechat" aria-hidden="true"></i> Mensagens <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-wechat" aria-hidden="true"></i> Mensagens <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="content" lang="x-content">
-                        <h2>log avisos/mute/kick/ban</h2>
-                        <h2>mensagem em chat</h2>
-                        <h2>log vai para o db</h2>
-                    </div>
-                </div>
-            </label>
-            <br>
-            
             <label class="Labels">
                 <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
                 <div class="container" lang="x-container">
@@ -142,8 +135,13 @@
                         <h1><i class="fa fa-gear" aria-hidden="true"></i> autorole <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
                     </div>
                     <div class="content" lang="x-content">
-                        <h2>depois de X tempo</h2>
-                        <h2>depois de enviar mensagem</h2>
+                        <h2>Role:</h2>
+                        <!-- mesma ideia do ban word -->
+                        <h3><input type="text" value="roles do server" class="type" maxlength="50"></h3>
+                        <!-- checkbox -->
+                        <h4>depois de X tempo</h4>
+                        <h3><input type="text" value="tempo" class="type" maxlength="50"></h3>
+                        <h4>depois de enviar mensagem</h4>
                     </div>
                 </div>
             </label>

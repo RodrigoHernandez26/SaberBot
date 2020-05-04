@@ -9,9 +9,6 @@ body{
 }
 
 .main{
-  margin: 5%;
-  margin-left: 29%;
-  margin-right: 29%;
   background: #212124;
   color: #fff;
   font-weight: bold;
@@ -100,7 +97,7 @@ h1{
 }
 * [lang=x-control]:checked + [lang=x-container] [lang=x-content],
 .control:checked + .container .content{
-  max-height:600px !important;
+  max-height: none !important;
 }
 
 .ecxshow{
