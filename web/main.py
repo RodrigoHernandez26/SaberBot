@@ -42,6 +42,7 @@ def dashboard():
     access_token = OAuth.get_access_token(code)
 
     token = requests.post('http://127.0.0.1:3000/token/', json= {"access_token": access_token}).json()['token']
+    print(token)
 
     global user_info
     user_info = OAuth.get_user_info(access_token)

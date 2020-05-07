@@ -57,7 +57,6 @@ async def reload(ctx, extension):
 
 @client.event
 async def on_command_error(ctx, error):
-    print(error)
     if isinstance(error, CommandNotFound):
         return
 

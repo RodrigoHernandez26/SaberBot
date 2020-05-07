@@ -28,11 +28,11 @@ class SetAdm(commands.Cog):
                     return
 
             try:
-                data = mysql_command(f'select * from reset_roles where server = {ctx.guild.id}', True)[0]
-                mysql_command(f'update reset_roles set id_role = {role} where server = {ctx.guild.id}')
+                data = mysql_command(f'select * from adm_roles where server = {ctx.guild.id}', True)[0]
+                mysql_command(f'update adm_roles set id_role = {role} where server = {ctx.guild.id}')
 
             except Exception:
-                mysql_command(f'insert into reset_roles (server, id_role) value ({ctx.guild.id}, {role})')
+                mysql_command(f'insert into adm_roles (server, id_role) value ({ctx.guild.id}, {role})')
 
             await ctx.channel.send(embed = setadm_alterado(role_obj))
 

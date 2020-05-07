@@ -12,7 +12,7 @@ class Reset(commands.Cog):
     async def reset(self, ctx):
         pnts = mysql_command("select * from pnts", True)
         try:
-            role_perm = mysql_command(f"select * from reset_roles where server = {ctx.guild.id}", True)[0]['id_role']
+            role_perm = mysql_command(f"select * from adm_roles where server = {ctx.guild.id}", True)[0]['id_role']
 
         except Exception:
             await ctx.channel.send(embed = reset_none())

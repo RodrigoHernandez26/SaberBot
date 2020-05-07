@@ -4,7 +4,7 @@ const controller = require('../controllers/guild-controller');
 const authService = require('../services/auth-sevice');
 
 
-router.get('/guild', authService.authorize,controller.getGuild)
+router.get('/guild', authService.authorize, controller.getGuild)
 router.post('/guild', authService.authorize, controller.postGuild)
 router.put('/guild', authService.authorize, controller.putGuild)
 router.delete('/guild', authService.authorize, controller.deleteGuild)
