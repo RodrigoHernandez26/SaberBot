@@ -18,20 +18,16 @@ body{
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   position: absolute;
+  transition: margin-left .5s;
+  left: 25%;
+  width: 50%;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .position{
     text-align:center;
     margin-bottom: 10%;
-}
-
-h1{
-  font-size: 48px;
-}
-
-.fix{
-  display: inline-block;
-  margin: 25px;
 }
 
 #Title{
@@ -71,59 +67,27 @@ h1{
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 15px 15px rgba(0,0,0,0.22);
 }
 
-/* Buttom */
-.control{
-  display:none !important;
-}
-* [lang=x-show],
-.show{
-  display:block !important;
-  max-height:none !important;
-}
-* [lang=x-content],
-.content{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height 1.5s;
-}
-* [lang=x-control]:checked + [lang=x-container] [lang=x-show],
-.control:checked + .container .show{
-  display:none !important;
-}
-* [lang=x-control]:checked + [lang=x-container] [lang=x-hide],
-.control:checked + .container .hide{
-  display:block !important;
-  max-height:none !important;
-}
-* [lang=x-control]:checked + [lang=x-container] [lang=x-content],
-.control:checked + .container .content{
-  max-height: none !important;
-}
-
-.ecxshow{
-  display:none !important;
-}
-.ecxcontent{
-  max-height:none;
-}
-
-.buttom{
-  font-size: 70px;
-}
-
-.Labels *{
+.config *{
   margin-left: 3%;
   margin-right: 3%;
 }
 
-.Labels h1{
+h1{
   font-size: 36px;
   text-transform: uppercase;
   font-family: Impact;
   text-align: center;
+  padding: 25px;
+  background: #0c0e0f;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
-.Labels h2{
+h2{
   font-size: 26px;
   background: #0c0e0f;
   text-transform: uppercase;
@@ -134,7 +98,7 @@ h1{
 }
 
 
-.Labels h3{
+h3{
   font-size: 26px;
   background: #212124;
   text-transform: uppercase;
@@ -166,22 +130,10 @@ h1{
   outline: 0;
 }
 
-.Labels p{
+p{
   font-size: 20px;
   margin-left: 15%;
   border-radius: 15px;
-}
-
-.container{
-  padding: 5px;
-  background: #0c0e0f;
-  border-radius: 15px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
-
-.configimage{
-  height: 36px;
-  width: 36px;
 }
 
 .buttom:hover{
@@ -209,6 +161,7 @@ h1{
   right: 3%;
   height: 120px;
   width: 120px;
+  z-index: 1;
 }
 
 button{
@@ -225,6 +178,7 @@ button{
 
 button:hover{
   text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
+  cursor: pointer;
 }
 
 button:focus{
@@ -237,4 +191,42 @@ button:focus{
 
 button:active{
   box-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
+}
+
+/* Effect Button */
+.sidenav {
+  height: 100%;
+  position: fixed;
+  top: 3%;
+  left: 51%;
+  background-color: #0c0e0f;
+  transition: 0.5s;
+  padding-top: 60px;
+  border-radius: 15px;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.sidenav *{
+  padding: 3%;
+}
+
+.content{
+  display: none;
+}
+
+.buttonfunction:active{
+  transform: translateY(4px);
+}
+
+.buttonfunction:hover{
+  text-shadow: 0 0 15px rgba(244, 0, 0, 0.71);
+  cursor: pointer;
 }

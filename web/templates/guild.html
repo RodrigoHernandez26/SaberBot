@@ -10,162 +10,153 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/gearconfigicon.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-    <div class="main">
+    <div class="main" id="disabled">
         <a href="{{url_for('dashHome')}}">
             <img src="{{url_for('static', filename= 'assets/images/arrow.png')}}" alt="Arrow" id="arrow">
         </a>
         <div class="position">
-            <h1 id="SaberBot"><span class="Initial">S</span>aber<span class="Initial">B</span>ot</h1>
+            <h5 id="SaberBot"><span class="Initial">S</span>aber<span class="Initial">B</span>ot</h5>
             <h1 id="Title">{{guild_name}}</h1>
         </div>
         <div class="cofig">
-            <label class="Labels">
-                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
-                <div class="container" lang="x-container">
-                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-tasks" aria-hidden="true"></i> registro de auditoria <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-tasks" aria-hidden="true"></i> registro de auditoria <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="content" lang="x-content">
-                    </div>
-                </div>
-            </label>
             <br>
-            <label class="Labels">
-                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
-                <div class="container" lang="x-container">
-                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-gears" aria-hidden="true"></i> Configurações Gerais <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-gears" aria-hidden="true"></i> Configurações Gerais <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="content" lang="x-content">
-                        <h2>prefixo</h2>
-                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-                        <i class="fa fa-download" aria-hidden="true"></i>
-                        <h2>baixar informação do bot sobre o server</h2>
-                        <i class="fa fa-crosshairs" aria-hidden="true"></i>
-                        <h2>deletar informação do bot sobre o server</h2>
-                    </div>
-                </div>
-            </label>
+            <h1 id="openclose" class="buttonfunction"><i class="fa fa-tasks" aria-hidden="true"></i> Registro de Auditoria <i class="fa fa-arrow-circle-right" aria-hidden="true" id="saberbutton"></i></h1>
             <br>
-            <label class="Labels">
-                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
-                <div class="container" lang="x-container">
-                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-warning" aria-hidden="true"></i> Moderação <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-warning" aria-hidden="true"></i> Moderação <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="content" lang="x-content">
-                        <h2>Configuração de Avisos </h2>
-                        <h4>Números de avisos para</h4>
-                        <h4>Mute</h4>
-                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-                        <h4>Kick</h4>
-                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-                        <h4>Ban</h4>
-                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-                        <h4>Tempo de mute</h4>
-                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-                        <h4>Duração dos avisos</h4>
-                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-                        <h2>mensagens</h2>
-                        <p>mensagens dos avisos</p>
-                        <!-- Checkbox -->
-                        <p>dm</p>
-                        <p>chat</p>
-                        <!-- Checkbox -->
-                        <h2>SaberBot Ban List</h2>
-                        <p>ban auto e/ou aviso staff chat</p>
-
-                        <h2>ban words</h2>
-                        <h3><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-                    </div>
-                </div>
-            </label>
+            <h1 id="openclose1" class="buttonfunction"><i class="fa fa-gears" aria-hidden="true"></i> Configurações Gerais <i class="fa fa-arrow-circle-right" aria-hidden="true" id="saberbutton1"></i></h1>
             <br>
-            <label class="Labels">
-                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
-                <div class="container" lang="x-container">
-                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-code" aria-hidden="true"></i> Comandos <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-code" aria-hidden="true"></i> Comandos <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="content" lang="x-content">
-                        <!-- mesma ideia do ban words -->
-                        <h2>desativar comandos</h2>
-                        <h2>desativar comandos em chat</h2>
-                        <!-- roles do server -->
-                        <h2>setadm</h2>
-                    </div>
-                </div>
-            </label>
+            <h1 id="openclose2" class="buttonfunction"><i class="fa fa-warning" aria-hidden="true"></i> Moderação <i class="fa fa-arrow-circle-right" aria-hidden="true" id="saberbutton2"></i></h1>     
             <br>
-            <label class="Labels">
-                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
-                <div class="container" lang="x-container">
-                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-group" aria-hidden="true"></i> Redes Sociais <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-group" aria-hidden="true"></i> Redes Sociais <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="content" lang="x-content">
-                    </div>
-                </div>
-            </label>
+            <h1 id="openclose3" class="buttonfunction"><i class="fa fa-code" aria-hidden="true"></i> Comandos <i class="fa fa-arrow-circle-right" aria-hidden="true" id="saberbutton3"></i></h1>
+            <br>          
+            <h1 id="openclose4" class="buttonfunction"><i class="fa fa-group" aria-hidden="true"></i> Redes Sociais <i class="fa fa-arrow-circle-right" aria-hidden="true" id="saberbutton4"></i></h1>
             <br>
-            <label class="Labels">
-                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
-                <div class="container" lang="x-container">
-                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-gear" aria-hidden="true"></i> autorole <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
-                        <h1><i class="fa fa-gear" aria-hidden="true"></i> autorole <i class="fa fa-arrow-circle-up" aria-hidden="true"></i></h1>
-                    </div>
-                    <div class="content" lang="x-content">
-                        <h2>Role:</h2>
-                        <!-- mesma ideia do ban word -->
-                        <h3><input type="text" value="roles do server" class="type" maxlength="50"></h3>
-                        <!-- checkbox -->
-                        <h4>depois de X tempo</h4>
-                        <h3><input type="text" value="tempo" class="type" maxlength="50"></h3>
-                        <h4>depois de enviar mensagem</h4>
-                    </div>
-                </div>
-            </label>
+            <h1 id="openclose5" class="buttonfunction"><i class="fa fa-gear" aria-hidden="true"></i> AutoRole <i class="fa fa-arrow-circle-right" aria-hidden="true" id="saberbutton5"></i></h1>    
             <br>
         </div>
     </div>
+
+
+    <div id="mySidenav" class="sidenav" style="width: 0%; display: none;">
+        <h2 class="textmysidenav">Por enquanto nada</h2>
+    </div>
+
+    <div id="mySidenav1" class="sidenav" style="width: 0%; display: none;">
+        <h2 class="textmysidenav1">prefixo</h2>
+        <h3 class="textmysidenav1"><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
+        <h2 class="textmysidenav1">configurar limite dos dados (respeitando os originais)</h2>
+        <h2 class="textmysidenav1">mensagem e valor do limite add</h2>
+        <h2 class="textmysidenav1">baixar informação do bot sobre o server</h2>
+        <h2 class="textmysidenav1">deletar informação do bot sobre o server</h2>
+    </div>
+
+    <div id="mySidenav2" class="sidenav" style="width: 0%; display: none;">
+        <h2 class="textmysidenav2">config avisos </h2>
+        <p class="textmysidenav2">num de avisos pra mute/kick/ban</p>
+        <p class="textmysidenav2">tempo de mute/ban</p>
+        <p class="textmysidenav2">tempo dos avisos</p>
+        <h2 class="textmysidenav2">mensagens</h2>
+        <p class="textmysidenav2">mensagens dos avisos</p>
+        <p class="textmysidenav2">dm</p>
+        <p class="textmysidenav2">chat</p>
+        <p class="textmysidenav2">personalizada</p>
+        <h2 class="textmysidenav2">lista global de users ban</h2>
+        <p class="textmysidenav2">ban auto e/ou aviso staff chat ou owner dm</p>
+        <p class="textmysidenav2">ban words</p>
+    </div>
+
+    <div id="mySidenav3" class="sidenav" style="width: 0%; display: none;">
+        <h2 class="textmysidenav3">desativar comandos</h2>
+        <h2 class="textmysidenav3">desativar comandos em chat</h2>
+        <h2 class="textmysidenav3">enviar mensagem / aviso / deletar mensagem</h2>
+        <p class="textmysidenav3">deletar informação do bot sobre o server</p>
+        <h2 class="textmysidenav3">setadm (?)</h2>
+    </div>
+
+    <div id="mySidenav4" class="sidenav" style="width: 0%; display: none;">
+        <h2 class="textmysidenav4">Por enquanto nada</h2>
+    </div>
+
+    <div id="mySidenav5" class="sidenav" style="width: 0%; display: none;">
+        <h2 class="textmysidenav5">depois de X tempo</h2>
+        <h2 class="textmysidenav5">depois de enviar mensagem</h2>
+    </div>
+
+
     <div class="button" id="change">
         <button id="changing">
             <i class="fa fa-cloud-upload" aria-hidden="true" id="changed"></i> 
         </button>
     </div>
     <script>
-        document.getElementById('change').onclick = function changeContent() {
-            document.getElementById('changed').className = 'fa fa-check';
-            document.getElementById('changing').style.boxShadow = '0 0 15px rgba(244, 0, 0, 0.71)';
-            document.getElementById('changing').style.fontSize = '600%';
-            document.getElementById('changing').style.textShadow = '0 0 15px rgba(244, 0, 0, 0.71)';
-            setTimeout(function(){
-                document.getElementById('changing').style.textShadow = '0 0 0px rgba(0, 0, 0, 0)';
-                document.getElementById('changing').style.fontSize = '400%';
-                document.getElementById('changing').style.boxShadow = '10px 10px 5px 0px rgba(0,0,0,0.75)';
-                document.getElementById('changed').className = 'fa fa-cloud-upload';
-            }, 3000);
-        }
+
+
+        $(document).ready(function(){
+            $("#change").click(function() {
+                var changing = $("#changing")
+                var changed = $("#changed");
+                changed.removeClass('fa-cloud-upload').addClass('fa-check');
+                changing.animate({boxShadow: '0 0 15px rgba(244, 0, 0, 0.71)', fontSize: '600%', textShadow: '0 0 15px rgba(244, 0, 0, 0.71)'}, "fast");
+                changing.animate({textShadow: '0 0 0px rgba(0, 0, 0, 0)'}, 'slow');
+                changing.animate({fontSize: '400%'}, 'slow');
+                changing.animate({boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)'}, 'slow');     
+            });
+
+            $(".buttonfunction").click(function() {
+                var id = $(this).attr('id');
+                if (id == 'openclose'){
+                    var idmySidenav = $('#mySidenav');
+                    var classtextmysidenax = $('.textmysidenav');
+                    var idsaberbutton =  $('#saberbutton');
+                }
+                else if (id == 'openclose1'){
+                    var idmySidenav = $('#mySidenav1');
+                    var classtextmysidenax = $('.textmysidenav1');
+                    var idsaberbutton =  $('#saberbutton1');
+                }
+                else if (id == 'openclose2'){
+                    var idmySidenav = $('#mySidenav2');
+                    var classtextmysidenax = $('.textmysidenav2');
+                    var idsaberbutton =  $('#saberbutton2');
+                }
+                else if (id == 'openclose3'){
+                    var idmySidenav = $('#mySidenav3');
+                    var classtextmysidenax = $('.textmysidenav3');
+                    var idsaberbutton =  $('#saberbutton3');
+                }
+                else if (id == 'openclose4'){
+                    var idmySidenav = $('#mySidenav4');
+                    var classtextmysidenax = $('.textmysidenav4');
+                    var idsaberbutton =  $('#saberbutton4');
+                }
+                else if (id == 'openclose5'){
+                    var idmySidenav = $('#mySidenav5');
+                    var classtextmysidenax = $('.textmysidenav5');
+                    var idsaberbutton =  $('#saberbutton5');
+                }
+
+
+
+
+                if (idmySidenav.width() == 0){
+                    $('.main').animate({left: '0'}, 'slow');
+                    idmySidenav.width('49%');
+                    idmySidenav.show(200);
+                    classtextmysidenax.show();
+                    idsaberbutton.removeClass('fa fa-arrow-circle-right').addClass('fa fa-arrow-circle-left');
+                }
+                else{
+                    $('.main').animate({left: '25%'}, 'slow');
+                    classtextmysidenax.hide("fast");
+                    idmySidenav.width('0%');
+                    idsaberbutton.removeClass('fa fa-arrow-circle-left').addClass('fa fa-arrow-circle-right');
+                    idmySidenav.fadeOut("100");
+                }
+            });
+
+        });
     </script>
 </body>
 </html>
