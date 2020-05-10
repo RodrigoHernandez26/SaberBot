@@ -45,26 +45,33 @@
 
     <div id="mySidenav1" class="sidenav" style="width: 0%; display: none;">
         <h2 class="textmysidenav1">prefixo</h2>
-        <h3 class="textmysidenav1"><input type="text" value="{{guild_name}}" class="type" maxlength="50"></h3>
-        <h2 class="textmysidenav1">configurar limite dos dados (respeitando os originais)</h2>
-        <h2 class="textmysidenav1">mensagem e valor do limite add</h2>
-        <h2 class="textmysidenav1">baixar informação do bot sobre o server</h2>
-        <h2 class="textmysidenav1">deletar informação do bot sobre o server</h2>
+        <h3 class="textmysidenav1"><input type="text" value="" class="type" id="prefix" maxlength="50"></h3>
+        <h2 class="textmysidenav1">baixar informação do bot sobre o server <a href="#"><i class="fa fa-download faicon" aria-hidden="true"></i></a></h2>
+        <h2 class="textmysidenav1">deletar informação do bot sobre o server <a href="#"><i class="fa fa-times faicon" aria-hidden="true"></i></a></h2>
     </div>
 
     <div id="mySidenav2" class="sidenav" style="width: 0%; display: none;">
-        <h2 class="textmysidenav2">config avisos </h2>
-        <p class="textmysidenav2">num de avisos pra mute/kick/ban</p>
-        <p class="textmysidenav2">tempo de mute/ban</p>
-        <p class="textmysidenav2">tempo dos avisos</p>
+        <h2 class="textmysidenav2">Configuração de Avisos</h2>
+        <h4 class="textmysidenav2">Números de avisos para Mute/Kick/Ban<input type="text" value="" class="mutekickban" maxlength="3"><input type="text" value="" class="mutekickban textmysidenav2" id="prefix" maxlength="3"><input type="text" value="" class="mutekickban textmysidenav2" id="prefix" maxlength="3"></h4>
+        <h4 class="textmysidenav2">Tempo de Mute<input type="text" value="" class="mutekickban" maxlength="3"></h4>
+        <h4 class="textmysidenav2">Duração dos Avisos<input type="text" value="" class="mutekickban" maxlength="3"></h4>
         <h2 class="textmysidenav2">mensagens</h2>
-        <p class="textmysidenav2">mensagens dos avisos</p>
-        <p class="textmysidenav2">dm</p>
-        <p class="textmysidenav2">chat</p>
-        <p class="textmysidenav2">personalizada</p>
-        <h2 class="textmysidenav2">lista global de users ban</h2>
-        <p class="textmysidenav2">ban auto e/ou aviso staff chat ou owner dm</p>
-        <p class="textmysidenav2">ban words</p>
+        <h4 class="textmysidenav2">Avisos via<br>
+            <input name=DM type="checkbox" value="" class="checkboxavisos" maxlength="3">
+            <label for="DM">DM</label>
+            <br>
+            <input name=Chat type="checkbox" value="" class="checkboxavisos" maxlength="3">
+            <label for="Chat">Chat</label>
+        </h4>
+        <h2 class='textmysidenav2'>SaberBot Ban List</h2>
+        <h4 class="textmysidenav2">
+            <input name=DM type="checkbox" value="" class="checkboxavisos" maxlength="3">
+            <label for="DM">Ban Automático</label>
+            <br>
+            <input name=Chat type="checkbox" value="" class="checkboxavisos" maxlength="3">
+            <label for="Chat">Aviso Staff por Chat</label>
+        </h4>
+        <h2>Ban Words</h2>
     </div>
 
     <div id="mySidenav3" class="sidenav" style="width: 0%; display: none;">
@@ -94,6 +101,16 @@
 
 
         $(document).ready(function(){
+            // x-access-token: token
+            // $.get(http://127.0.0.1:3000/guild/{{token}})
+
+
+            // $('#prefix').val('{{guild_name}}');
+
+
+
+
+            // Button Effect
             $("#change").click(function() {
                 var changing = $("#changing")
                 var changed = $("#changed");
@@ -104,47 +121,59 @@
                 changing.animate({boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)'}, 'slow');     
             });
 
+
+            //Button Function
             $(".buttonfunction").click(function() {
                 var id = $(this).attr('id');
                 if (id == 'openclose'){
                     var idmySidenav = $('#mySidenav');
                     var classtextmysidenax = $('.textmysidenav');
                     var idsaberbutton =  $('#saberbutton');
+                    var idopenclose =  $('#openclose');
+                    var idopencloseli = $('#openclose li');
                 }
                 else if (id == 'openclose1'){
                     var idmySidenav = $('#mySidenav1');
                     var classtextmysidenax = $('.textmysidenav1');
                     var idsaberbutton =  $('#saberbutton1');
+                    var idopenclose =  $('#openclose1');
+                    var idopencloseli = $('#openclose1 li');
                 }
                 else if (id == 'openclose2'){
                     var idmySidenav = $('#mySidenav2');
                     var classtextmysidenax = $('.textmysidenav2');
                     var idsaberbutton =  $('#saberbutton2');
+                    var idopenclose =  $('#openclose2');
+                    var idopencloseli = $('#openclose2 li');
                 }
                 else if (id == 'openclose3'){
                     var idmySidenav = $('#mySidenav3');
                     var classtextmysidenax = $('.textmysidenav3');
                     var idsaberbutton =  $('#saberbutton3');
+                    var idopenclose =  $('#openclose3');
+                    var idopencloseli = $('#openclose3 li');
                 }
                 else if (id == 'openclose4'){
                     var idmySidenav = $('#mySidenav4');
                     var classtextmysidenax = $('.textmysidenav4');
                     var idsaberbutton =  $('#saberbutton4');
+                    var idopenclose =  $('#openclose4');
+                    var idopencloseli = $('#openclose4 li');
                 }
                 else if (id == 'openclose5'){
                     var idmySidenav = $('#mySidenav5');
                     var classtextmysidenax = $('.textmysidenav5');
                     var idsaberbutton =  $('#saberbutton5');
+                    var idopenclose =  $('#openclose5');
+                    var idopencloseli = $('#openclose5 li');
                 }
-
-
-
 
                 if (idmySidenav.width() == 0){
                     $('.main').animate({left: '0'}, 'slow');
                     idmySidenav.width('49%');
                     idmySidenav.show(200);
                     classtextmysidenax.show();
+                    // idopencloseli.animate.css('textShadow', '0 0 15px rgba(244, 0, 0, 0.71)');
                     idsaberbutton.removeClass('fa fa-arrow-circle-right').addClass('fa fa-arrow-circle-left');
                 }
                 else{

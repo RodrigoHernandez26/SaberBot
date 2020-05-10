@@ -25,7 +25,7 @@ def invite():
 def guild(guild_id, guild_name):
     if guild_id == '0':
         return redirect('/login/')
-    return render_template('guild.html', BotName= BotName, guild_name= guild_name)
+    return render_template('guild.html', BotName= BotName, guild_name= guild_name, token= token)
 
 @app.route('/status/')
 def status():
@@ -40,7 +40,7 @@ def status():
 def dashboard():
     code = request.args.get('code')
     access_token = OAuth.get_access_token(code)
-
+    global token
     token = requests.post('http://127.0.0.1:3000/token/', json= {"access_token": access_token}).json()['token']
 
     global user_info
