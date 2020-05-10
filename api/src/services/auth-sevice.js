@@ -28,7 +28,3 @@ exports.authorize = function (req, res, next){
         });
     }
 };
-
-// quando entra em /dashboard/ gera um token com o access token que é valido por 2h
-// todos os post, get, put e delete precisam desse token e ele é validado
-// quando o token expira é necessário logar novamente

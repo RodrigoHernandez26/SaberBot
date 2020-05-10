@@ -79,11 +79,36 @@ const schema = new Schema({
         required: false,
         default: false
     },
-    banWords: [{
+    banWords: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
+    banWordsList: [{
         type: String,
         required: false,
         default: ""
     }],
+    flood: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    link : {
+        type: String,
+        required: false,
+        default: ""
+    },
+    linkList: [{
+        type: String,
+        require: false,
+        default ""
+    }],
+    spamcaps: {
+        type: String,
+        required: false,
+        default: ""
+    },
     tempoAutoRole: {
         type: Number,
         required: false,
