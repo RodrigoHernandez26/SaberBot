@@ -52,8 +52,8 @@ def api_request(qnt, dado):
 
     with open('./bot/settings/settings.yaml', 'r') as f: reqKey = yaml.load(f, Loader= yaml.FullLoader)
 
-    reqData['params']['apiKey'] = reqKey['API_KEY']
-    reqData['id'] = reqKey['API_ID']
+    reqData['params']['apiKey'] = reqKey['RNG_KEY']
+    reqData['id'] = reqKey['RNG_ID']
     reqData['params']['n'] = str(qnt)
     reqData['params']['max'] = str(dado)
 
@@ -72,7 +72,7 @@ def api_request(qnt, dado):
     # O Bot limita as requests quando atinge esses valores
     # Para desativar essa função é só apagar essas linhas do if abaixo ou o comando que escreve no arquivo settings.yaml
     if json['result']['bitsLeft'] <= 100 or json['result']['requestsLeft'] <= 10:
-        reqKey['API_KEY'] = None
+        reqKey['RNG_KEY'] = None
         with open('./bot/settings/settings.yaml', 'w') as f: yaml.dump(reqKey, f)
         mysql_command(f"update status_api set rand = 0 where id = 1")
 

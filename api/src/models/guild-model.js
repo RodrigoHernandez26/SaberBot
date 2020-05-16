@@ -90,24 +90,24 @@ const schema = new Schema({
         default: ""
     }],
     flood: {
-        type: String,
+        type: Boolean,
         required: false,
-        default: ""
+        default: false
     },
     link : {
-        type: String,
+        type: Boolean,
         required: false,
-        default: ""
+        default: false
     },
     linkList: [{
         type: String,
         require: false,
-        default ""
+        default: ""
     }],
     spamcaps: {
-        type: String,
+        type: Boolean,
         required: false,
-        default: ""
+        default: false
     },
     tempoAutoRole: {
         type: Number,

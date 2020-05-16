@@ -22,14 +22,15 @@ except Exception:
     sys.exit()
 
 try:
-    assert data['TOKEN_BOT'] != None
+    assert data['TOKEN_DISCORD'] != None
     assert data['PREFIX'] != None
-    assert data['API_KEY'] != None
-    assert data['API_ID'] != None
     assert data['LIM_ADD'] != None
     assert data['LIM_MULT'] != None
     assert data['LIM_QNT'] != None
     assert data['LIM_DADO'] != None
+    assert data['TOKEN_JWT'] != None
+    assert data['RNG_KEY'] != None
+    assert data['RNG_ID'] != None
     assert data['HOST'] != None
     assert data['USER'] != None
     assert data['PASSWORD'] != None
@@ -60,6 +61,22 @@ async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
         return
 
+@client.event
+async def on_guild_join(guild):
+    payload = {
+        "x-access-token": data['TOKEN_JWT'],
+        "guildID": guild.id
+    }
+    requests.post('http://127.0.0.1:3000/guild/sign', json= payload)
+
+@client.event
+async def on_guild_remove(guild):
+    payload = {
+        "x-access-token": data['TOKEN_JWT'],
+        "guildID": guild.id
+    }
+    requests.delete('http://127.0.0.1:3000/guild/delete', json= payload)
+
 try:
     assert len(os.listdir('./bot/cogs')) == 0
     print('Nenhum comando criado em ./cogs')
@@ -81,7 +98,7 @@ except Exception:
             cont += 1        
 
 try:
-    client.run(data['TOKEN_BOT'])
+    client.run(data['TOKEN_DISCORD'])
 
 except Exception as erro:
     print(f'Impossível conectar ao bot - {erro}')

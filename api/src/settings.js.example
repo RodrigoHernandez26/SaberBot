@@ -1,5 +1,4 @@
-global.SALT_KEY = ''
-
 module.exports = {
-    connectionStrig = ''
+    connectionStrig: "",
+    AUTHENTICATE_KEY: ''
 }

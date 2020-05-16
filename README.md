@@ -14,7 +14,7 @@ Utilizamos o Windows 10, talvez não funcione em outros OS.
 * MongoDB
 * MySQL
 ```
-Todos os pacotes do pip estão em `./bot/requirements.txt` e os pacotes do npm estão em `./api/package.json`.
+Todos os pacotes do pip estão em `./requirements.txt` e os pacotes do npm estão em `./api/package.json`.
 
 ## Instalação
 1. [Python](https://www.python.org/downloads/)
@@ -32,7 +32,7 @@ Todos os pacotes do pip estão em `./bot/requirements.txt` e os pacotes do npm e
 7. [MySQL](https://www.mysql.com/downloads/)
 
 ## Criação de arquivos
-Antes de iniciar a hospedagem, você precisa criar 3 arquivos `settings.yaml` em `./bot/settings`, `./api`, `./web/settings`. Em cada uma dessas páginas, tem um `settings.yaml.example` que você deve usar como padrão para cada `settings.yaml`.
+Antes de iniciar a hospedagem, você precisa criar 3 arquivos `settings` em `./bot/settings`, `./api`, `./web/settings`. Em cada uma dessas pastas, tem um `.example` que você deve usar como guia.
 
 A query de criação do MySQL está em `./bot/settings/bot.sql`.
 

@@ -12,20 +12,9 @@ BotName = "SaberBot"
 def index():
     return render_template('index.html', BotName= BotName)
 
-@app.route('/login/')
-def login():
-    return redirect(OAuth.discord_login_url)
-
 @app.route('/invite/')
 def invite():
     return redirect('https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=8')
-
-@app.route('/dashboard/guild/', defaults= {'guild_id': "0"})
-@app.route('/dashboard/guild/<guild_id>/<guild_name>')
-def guild(guild_id, guild_name):
-    if guild_id == '0':
-        return redirect('/login/')
-    return render_template('guild.html', BotName= BotName, guild_name= guild_name, token= token)
 
 @app.route('/status/')
 def status():
@@ -36,25 +25,90 @@ def status():
         db = False
     return render_template('status.html', random= data[0]['rand'], discord= data[0]['disc'], db = db, BotName = BotName)
 
+@app.route('/login/')
+def login():
+    try:
+        assert token != None
+        return redirect('/dashboard/home/')
+    except:
+        return redirect(OAuth.discord_login_url)
+
 @app.route('/dashboard/')
 def dashboard():
-    code = request.args.get('code')
-    access_token = OAuth.get_access_token(code)
-    global token
-    token = requests.post('http://127.0.0.1:3000/token/', json= {"access_token": access_token}).json()['token']
-    print(token)
 
-    global user_info
+    try:
+        code = request.args.get('code')
+        assert code != None
+    except:
+        return redirect('/')
+
+    access_token = OAuth.get_access_token(code)
     user_info = OAuth.get_user_info(access_token)
-    global user_guilds
     user_guilds = OAuth.get_user_guilds(access_token)
-    global avatar_url
     avatar_url = f'https://cdn.discordapp.com/avatars/{user_info["id"]}/{user_info["avatar"]}.png?size=256'
-    return dashHome()
+    
+    
+    payload = {
+        "user_info": user_info,
+        "user_guilds": user_guilds,
+        "avatar_url": avatar_url
+    }
+
+    global token
+    token = requests.post('http://127.0.0.1:3000/token/', json= payload).json()['token']
+
+    return redirect('/dashboard/home/')
 
 @app.route('/dashboard/home/')
 def dashHome():
+
+    try:
+        payload = {
+            "x-access-token": token
+        }
+
+        data = requests.post('http://127.0.0.1:3000/data/', json= payload)
+        assert data.status_code != 401
+        data = data.json()['data']
+
+    except:
+        return redirect(OAuth.discord_login_url)
+
+    user_info = data['user_info']
+    user_guilds = data['user_guilds']
+    avatar_url = data['avatar_url']
+
     return render_template('dashboard.html', user_info= user_info, user_guilds= user_guilds, avatar_url = avatar_url, BotName = BotName)
 
+@app.route('/dashboard/guild/', defaults= {'guild_id': "0"})
+@app.route('/dashboard/guild/<guild_id>/<guild_name>')
+def guild(guild_id, guild_name):
+    if guild_id == '0':
+        return redirect('/login/')
+
+    try:
+        payload = {
+            'x-access-token': token,
+            "guildID": guild_id
+        }
+
+        data = requests.get('http://localhost:3000/guild/data', json= payload).json()[0]
+
+    except IndexError: 
+        return redirect('https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=8')
+
+    except Exception:
+        return redirect('/login/')
+
+    return render_template('guild.html', BotName= BotName, guild_name= guild_name, data= data)
+
+@app.route('/logout/')
+def logout():
+    global token
+    token = None
+
+    return redirect('/')
+
 if (__name__ == "__main__"):
-    app.run(debug=True)
+    #app.run(host= '0.0.0.0', port= 30) #gcp
+    app.run(debug= True) #dev

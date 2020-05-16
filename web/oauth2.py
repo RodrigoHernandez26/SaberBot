@@ -5,19 +5,19 @@ class OAuth(object):
 
     with open('web/settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
 
-    CLIENT_ID = settings['CLIENT_ID']
-    CLIENT_SECRET = settings['CLIENT_SECRET']
+    client_id = settings['CLIENT_ID']
+    client_secret = settings['CLIENT_SECRET']
     scope = settings['SCOPE']
     redirect_uri = settings['REDIRECT_URI']
-    discord_login_url = f"https://discordapp.com/api/oauth2/authorize?client_id={CLIENT_ID}&redirect_uri={redirect_uri}&response_type=code&scope={scope}"
+    discord_login_url = f"https://discordapp.com/api/oauth2/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope={scope}"
     discord_token_url = 'https://discordapp.com/api/oauth2/token'
     discord_api_url = 'https://discordapp.com/api'
 
     @staticmethod
     def get_access_token(code):
         data = {
-            'client_id': OAuth.CLIENT_ID,
-            'client_secret': OAuth.CLIENT_SECRET,
+            'client_id': OAuth.client_id,
+            'client_secret': OAuth.client_secret,
             'grant_type': 'authorization_code',
             'code': code,
             'redirect_uri': OAuth.redirect_uri,

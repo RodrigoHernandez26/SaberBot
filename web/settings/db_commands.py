@@ -7,7 +7,7 @@ def connect():
 
     global connection
     connection = MySQLdb.connect(settings['HOST'], settings['USER'], settings['PASSWORD'], settings['DB'], settings['PORT'])
-    print('[*] Bot conectado ao db: ' + settings['DB'])
+    print('[*] Web conectado ao db: ' + settings['DB'])
 
     global c
     c = connection.cursor(MySQLdb.cursors.DictCursor)

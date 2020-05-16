@@ -1,42 +1,41 @@
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Controle - {{BotName}}</title>
-    <link rel="stylesheet" href="{{url_for('static', filename= 'assets/css/dashboard.css')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/gearicon.png')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-
-</head>
-<body>
-    <div class="perfil">
-        <a href="{{url_for('index')}}">
-            <img src="{{url_for('static', filename= 'assets/images/arrow.png')}}" alt="Arrow" id="arrow">
-        </a>
-        <div class="main">
-            <div id="you">
-                <img src="{{avatar_url}}" alt="Avatar">
-                <h1>{{user_info.username}}</h1>
-            </div>
-            <label>
-                <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
-                <div class="container" lang="x-container">
-                    <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
-                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
-                    </div>
-                    <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
-                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                    </div>
-                    <div class="content" lang="x-content">
-                        <h2>Username</h2><p>{{user_info.username}}#{{user_info.discriminator}}</p>
-                        <h2>Email</h2><p>{{user_info.email}}</p>
-                        <h2>ID</h2><p>{{user_info.id}}</p>
-                    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Painel de Controle - {{BotName}}</title>
+        <link rel="stylesheet" href="{{url_for('static', filename= 'assets/css/dashboard.css')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename= 'assets/images/gearicon.png')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    </head>
+    <body>
+        <div class="perfil">
+            <a href="{{url_for('index')}}">
+                <img src="{{url_for('static', filename= 'assets/images/arrow.png')}}" alt="Arrow" id="arrow">
+            </a>
+            <div class="main">
+                <div id="you">
+                    <img src="{{avatar_url}}" alt="Avatar">
+                    <h1>{{user_info.username}}</h1>
                 </div>
-            </label>
-            <br><br>
-            <div class= "guilds">
-                <h2>Selecione um servidor</h2>
+                <label>
+                    <input type="checkbox" style="display:none !important;" class="control" lang="x-control">
+                    <div class="container" lang="x-container">
+                        <div class="show buttom" lang="x-show" style="display:none;max-height:0;overflow:hidden;">
+                            <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                        </div>
+                        <div class="hide buttom" lang="x-hide" style="display:none;max-height:0;overflow:hidden;">
+                            <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                        </div>
+                        <div class="content" lang="x-content">
+                            <h2>Username</h2><p>{{user_info.username}}#{{user_info.discriminator}}</p>
+                            <h2>Email</h2><p>{{user_info.email}}</p>
+                            <h2>ID</h2><p>{{user_info.id}}</p>
+                        </div>
+                    </div>
+                </label>
+                <br><br>
+                <div class= "guilds">
+                    <h2>Selecione um servidor</h2>
                     {% for guild in user_guilds %}
                         {% if guild.owner or guild.permissions == 2147483647 %}
                             <div>
@@ -51,7 +50,8 @@
                             </div>
                         {% endif %}
                     {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
+    </body>
 </html>

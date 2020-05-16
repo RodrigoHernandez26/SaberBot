@@ -1,7 +1,7 @@
 #Preencha todos os campos antes de executar o main.py
 #Em embeds.py tem todas as mensagens que o bot envia
 
-TOKEN_BOT:  #Token do seu bot https://discordapp.com/developers/applications
+TOKEN_DISCORD:  #Token do seu bot https://discordapp.com/developers/applications
 
 PREFIX:  #Prefixo dos comandos do bot
 
@@ -13,9 +13,12 @@ LIM_QNT:  #Limite da quantidade de dados
 
 LIM_DADO:  #Limite do número de lados do dado
 
-#Request post do https://api.random.org
-API_KEY: 
-API_ID: 
+#API SaberBot - Token que não expira e será usado apenas no bot
+TOKEN_JWT: 
+
+#API do https://api.random.org
+RNG_KEY: 
+RNG_ID: 
 
 #CONNECT MySQL (Em bot.sql tem o arquivo para criar o db)
 HOST: 

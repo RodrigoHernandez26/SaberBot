@@ -339,7 +339,7 @@ def setadm_neg(dono):
 def jokenpo_bot(bot_choice, author):
 
     embed = discord.Embed(
-        title = f'😢 | {author} você pedeu! O bot jogou {bot_choice}.',
+        title = f'😢 | {author} você pedeu! O bot jogou `{bot_choice}`.',
         color = 0x22a7f0
     )
 
@@ -350,7 +350,7 @@ def jokenpo_bot(bot_choice, author):
 def jokenpo_user(bot_choice, author):
     
     embed = discord.Embed(
-        title = f'🎉 | {author} você ganhou! O bot jogou {bot_choice}.',
+        title = f'🎉 | {author} você ganhou! O bot jogou `{bot_choice}`.',
         color = 0x22a7f0
     )
 
@@ -361,7 +361,7 @@ def jokenpo_user(bot_choice, author):
 def jokenpo_empate(bot_choice, author):
 
     embed = discord.Embed(
-        title = f':flag_white: | {author} esse jogo foi empate! O bot jogou {bot_choice}.',
+        title = f':flag_white: | {author} esse jogo foi empate! O bot jogou `{bot_choice}`.',
         color = 0x22a7f0
     )
 
