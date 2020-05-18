@@ -7,7 +7,8 @@ const app = express();
 const router = express.Router();
 
 // Connect DB
-mongoose.connect(settings.connectionStrig)
+mongoose.set('useCreateIndex', true);
+mongoose.connect(settings.connectionStrig, { useNewUrlParser: true, useUnifiedTopology: true })
 
 //Models
 const Guild = require('./models/guild-model');

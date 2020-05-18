@@ -1,10 +1,14 @@
-from flask import Flask, request, redirect, session, render_template, url_for, make_response
+from flask import Flask, request, redirect, session, render_template, url_for, make_response, session
 from oauth2 import OAuth
 from settings.db_commands import connect, mysql_command
 import requests
+from datetime import timedelta
 
 connect()
+
 app = Flask(__name__)
+app.secret_key = 'SXSrHviCf2VqUVAv0EJB8w'
+app.permanent_session_lifetime = timedelta(hours=10)
 
 BotName = "SaberBot"
 
@@ -27,10 +31,10 @@ def status():
 
 @app.route('/login/')
 def login():
-    try:
-        assert token != None
+
+    if session.get('TOKEN', None) is not None:
         return redirect('/dashboard/home/')
-    except:
+    else:
         return redirect(OAuth.discord_login_url)
 
 @app.route('/dashboard/')
@@ -46,21 +50,32 @@ def dashboard():
     user_info = OAuth.get_user_info(access_token)
     user_guilds = OAuth.get_user_guilds(access_token)
     avatar_url = f'https://cdn.discordapp.com/avatars/{user_info["id"]}/{user_info["avatar"]}.png?size=256'
-    
-    
+
+    adm_guilds = []
+    for guilds in user_guilds:
+        if guilds['permissions'] == 2147483647 or guilds['owner']:
+            adm_guilds.append(guilds)
+     
     payload = {
         "user_info": user_info,
-        "user_guilds": user_guilds,
+        "user_guilds": adm_guilds,
         "avatar_url": avatar_url
     }
 
-    global token
     token = requests.post('http://127.0.0.1:3000/token/', json= payload).json()['token']
 
-    return redirect('/dashboard/home/')
+    session.permanent = True
+    session['TOKEN'] = token
 
-@app.route('/dashboard/home/')
+    return redirect(url_for("dashHome"))
+
+@app.route("/dashboard/home/")
 def dashHome():
+
+    if session.get('TOKEN', None) is not None:
+        token = session.get('TOKEN')
+    else:
+        return redirect(url_for('index'))
 
     try:
         payload = {
@@ -84,7 +99,12 @@ def dashHome():
 @app.route('/dashboard/guild/<guild_id>/<guild_name>')
 def guild(guild_id, guild_name):
     if guild_id == '0':
-        return redirect('/login/')
+        return redirect('/index/')
+
+    if session.get('TOKEN', None) is not None:
+        token = session.get('TOKEN')
+    else:
+        return redirect(url_for('index'))
 
     try:
         payload = {
@@ -102,13 +122,11 @@ def guild(guild_id, guild_name):
 
     return render_template('guild.html', BotName= BotName, guild_name= guild_name, data= data)
 
-@app.route('/logout/')
+@app.route("/logout/")
 def logout():
-    global token
-    token = None
-
-    return redirect('/')
+	session['TOKEN'] = None
+	return redirect(url_for("index"))
 
 if (__name__ == "__main__"):
-    #app.run(host= '0.0.0.0', port= 30) #gcp
+    #app.run(host= '0.0.0.0', port= 80) #gcp
     app.run(debug= True) #dev
