@@ -8,7 +8,7 @@ connect()
 
 app = Flask(__name__)
 app.secret_key = 'SXSrHviCf2VqUVAv0EJB8w'
-app.permanent_session_lifetime = timedelta(hours=10)
+app.permanent_session_lifetime = timedelta(hours=2)
 
 BotName = "SaberBot"
 
@@ -112,7 +112,7 @@ def guild(guild_id, guild_name):
             "guildID": guild_id
         }
 
-        data = requests.get('http://localhost:3000/guild/data', json= payload).json()[0]
+        data = requests.post('http://localhost:3000/guild/get', json= payload).json()[0]
 
     except IndexError: 
         return redirect('https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=8')

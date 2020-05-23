@@ -10,7 +10,18 @@ exports.postData = (req, res, next) => {
     res.status(200).send({data: jwt.decodeToken(req.body['x-access-token'])});
 }
 
-exports.getGuild = (req, res, next) => {
+exports.guildid = (req, res, next) => {
+    Guild.find({
+        guildID: req.body.guildID
+    }).then(data => {
+        res.status(200).send(data);
+    }).catch(e => {
+        res.status(400).send(e);
+    })
+    return;
+}
+
+exports.getGuilds = (req, res, next) => {
 
     const data = jwt.decodeToken(req.body['x-access-token'])
 

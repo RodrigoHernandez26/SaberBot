@@ -65,7 +65,7 @@ async def on_command_error(ctx, error):
 async def on_guild_join(guild):
     payload = {
         "x-access-token": data['TOKEN_JWT'],
-        "guildID": guild.id
+        "guildID": str(guild.id)
     }
     requests.post('http://127.0.0.1:3000/guild/sign', json= payload)
 
@@ -73,7 +73,7 @@ async def on_guild_join(guild):
 async def on_guild_remove(guild):
     payload = {
         "x-access-token": data['TOKEN_JWT'],
-        "guildID": guild.id
+        "guildID": str(guild.id)
     }
     requests.delete('http://127.0.0.1:3000/guild/delete', json= payload)
 
