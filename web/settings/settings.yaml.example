@@ -1,5 +1,7 @@
 #Preencha todos os campos antes de executar o main.py
+API_URL:  #Sem "/" no final
 
+# Configurações para OAuth2 do discord
 # ID e secret do seu bot https://discordapp.com/developers/applications
 CLIENT_ID: 
 CLIENT_SECRET: 

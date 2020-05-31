@@ -78,81 +78,72 @@ def api_request(qnt, dado):
 
     return data
 
-class Dado(commands.Cog):
+async def dado(ctx):
+    
+    try:
+        ctx.content[0]
+    except Exception:
+        return
 
-    def __init__(self, client):
-        self.client = client
+    conteudo = ctx.content
 
-    @commands.Cog.listener()
-    async def on_message(self, ctx):
-        
+# ****** Multiplicador ****** #
+    conteudo = conteudo.split('#')
+    mult = conteudo[0]
+
+    if mult == ctx.content:
+        conteudo = mult
+        mult = 1
+
+    else:
         try:
-            ctx.content[0]
-        except Exception:
-            return
-
-        conteudo = ctx.content
-
-    # ****** Multiplicador ****** #
-        conteudo = conteudo.split('#')
-        mult = conteudo[0]
-
-        if mult == ctx.content:
-            conteudo = mult
-            mult = 1
-
-        else:
-            try:
-                int(mult)
-            except ValueError:
-                return
-            conteudo = conteudo[1]
-
-    # ****** Quantidade ****** #
-        conteudo = conteudo.split('d')
-        qnt = conteudo[0]
-        if qnt == '':
-            conteudo = conteudo[1]
-            qnt = 1
-        else:
-            try:
-                int(qnt)
-            except ValueError:
-                return
-            conteudo = conteudo[1]
-
-    # ****** Dado e Modificador ****** #
-        if conteudo.split('-')[0] == conteudo:
-            if conteudo.split('+')[0] == conteudo:
-                dado = conteudo
-                mod = 0
-                sinal = None
-
-            else:
-                conteudo = conteudo.split('+')
-                dado = conteudo[0]
-                sinal = '+'
-                mod = conteudo[1]
-
-        else:
-            conteudo = conteudo.split('-')
-            dado = conteudo[0]
-            sinal = '-'
-            mod = conteudo[1]
-
-        try:
-            int(dado)
-            int(mod)
+            int(mult)
         except ValueError:
             return
+        conteudo = conteudo[1]
 
-        with open('./bot/settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
-
-        if int(mult) > settings['LIM_MULT'] or int(qnt) > settings['LIM_QNT'] or int(dado) > settings['LIM_DADO']:
+# ****** Quantidade ****** #
+    conteudo = conteudo.split('d')
+    qnt = conteudo[0]
+    if qnt == '':
+        conteudo = conteudo[1]
+        qnt = 1
+    else:
+        try:
+            int(qnt)
+        except ValueError:
             return
+        conteudo = conteudo[1]
 
-        resultado = api_request(int(qnt)*int(mult), int(dado))
-        await parser(ctx, int(mult), int(mod), sinal, resultado)
+# ****** Dado e Modificador ****** #
+    if conteudo.split('-')[0] == conteudo:
+        if conteudo.split('+')[0] == conteudo:
+            dado = conteudo
+            mod = 0
+            sinal = None
 
-def setup(client):
-    client.add_cog(Dado(client))
+        else:
+            conteudo = conteudo.split('+')
+            dado = conteudo[0]
+            sinal = '+'
+            mod = conteudo[1]
+
+    else:
+        conteudo = conteudo.split('-')
+        dado = conteudo[0]
+        sinal = '-'
+        mod = conteudo[1]
+
+    try:
+        int(dado)
+        int(mod)
+    except ValueError:
+        return
+
+    with open('./bot/settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
+
+    if int(mult) > settings['LIM_MULT'] or int(qnt) > settings['LIM_QNT'] or int(dado) > settings['LIM_DADO']:
+        return
+
+    resultado = api_request(int(qnt)*int(mult), int(dado))
+    await parser(ctx, int(mult), int(mod), sinal, resultado)

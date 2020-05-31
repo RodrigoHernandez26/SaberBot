@@ -1,10 +1,12 @@
 from flask import Flask, request, redirect, session, render_template, url_for, make_response, session
 from oauth2 import OAuth
 from settings.db_commands import connect, mysql_command
-import requests
+import requests, yaml
 from datetime import timedelta
 
 connect()
+
+with open('web/settings/settings.yaml', 'r') as f: settings = yaml.load(f, Loader= yaml.FullLoader)
 
 app = Flask(__name__)
 app.secret_key = 'SXSrHviCf2VqUVAv0EJB8w'
@@ -62,7 +64,7 @@ def dashboard():
         "avatar_url": avatar_url
     }
 
-    token = requests.post('http://127.0.0.1:3000/token/', json= payload).json()['token']
+    token = requests.post(f'{settings["API_URL"]}/token/', json= payload).json()['token']
 
     session.permanent = True
     session['TOKEN'] = token
@@ -82,7 +84,7 @@ def dashHome():
             "x-access-token": token
         }
 
-        data = requests.post('http://127.0.0.1:3000/data/', json= payload)
+        data = requests.post(f'{settings["API_URL"]}/data/', json= payload)
         assert data.status_code != 401
         data = data.json()['data']
 
@@ -112,7 +114,7 @@ def guild(guild_id, guild_name):
             "guildID": guild_id
         }
 
-        data = requests.post('http://localhost:3000/guild/get', json= payload).json()[0]
+        data = requests.post(f'{settings["API_URL"]}/guild/get', json= payload).json()[0]
 
     except IndexError: 
         return redirect('https://discordapp.com/oauth2/authorize?client_id=705878925363904543&scope=bot&permissions=8')

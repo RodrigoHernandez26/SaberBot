@@ -7,11 +7,6 @@ const schema = new Schema({
         required: true,
         unique: true
     },
-    addLim: {
-        type: Number,
-        required: false,
-        default: 10
-    },
     prefix: {
         type: String,
         required: false,
@@ -22,7 +17,7 @@ const schema = new Schema({
         required: false
     }],
     chatsDisable: [{
-        type: Number,
+        type: String,
         required: false
     }],
     chatsDisableMsg:{ //aviso == false || deletar == true
@@ -30,10 +25,6 @@ const schema = new Schema({
         required: false,
         default: false
     },
-    admRoles: [{
-        type: Number,
-        required: false
-    }],
     numMute: {
         type: Number,
         required: false,
@@ -54,11 +45,6 @@ const schema = new Schema({
         required: false,
         default: 3600
     },
-    tempoBan: { //segundos
-        type: Number,
-        required: false,
-        default: 3600
-    },
     tempoAviso: { //segundos
         type: Number,
         required: false,
@@ -69,17 +55,12 @@ const schema = new Schema({
         required: false,
         default: false
     },
-    idAviso: {
-        type: Number,
-        required: false,
-        default: 0
-    },
     autoBan: {
         type: Boolean,
         required: false,
         default: false
     },
-    banWords: {
+    banWords: { //ativado == true || desativado == false
         type: Boolean,
         required: false,
         default: false
@@ -89,12 +70,12 @@ const schema = new Schema({
         required: false,
         default: ""
     }],
-    flood: {
+    flood: { //ativado == true || desativado == false
         type: Boolean,
         required: false,
         default: false
     },
-    link : {
+    link : { //ativado == true || desativado == false
         type: Boolean,
         required: false,
         default: false
@@ -104,7 +85,7 @@ const schema = new Schema({
         require: false,
         default: ""
     }],
-    spamcaps: {
+    spamcaps: { //ativado == true || desativado == false
         type: Boolean,
         required: false,
         default: false
@@ -114,11 +95,6 @@ const schema = new Schema({
         required: false,
         default: 0
     },
-    autoRoleMsg: {
-        type: Boolean,
-        required: false,
-        default: false
-    }
 });
 
 module.exports = mongoose.model('Guild', schema);
