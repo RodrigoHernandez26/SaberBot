@@ -40,6 +40,13 @@ with open('./bot/settings/settings.yaml', 'r') as f: data = yaml.load(f, Loader=
 
 @client.event
 async def on_guild_join(guild):
+    # real payload
+    # payload = {
+    #     "x-access-token": data['TOKEN_JWT'],
+    #     "guildID": str(guild.id)
+    # }
+
+    # testing payload
     payload = {
         "x-access-token": data['TOKEN_JWT'],
         "guildID": str(guild.id),

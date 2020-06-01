@@ -50,12 +50,12 @@ const schema = new Schema({
         required: false,
         default: 3600
     },
-    localMsgAviso: { //"dm" == true || "chat" == false
-        type: Boolean,
+    tempoBan: { //segundos || o == 'perma'
+        type: Number,
         required: false,
-        default: false
+        default: 3600
     },
-    autoBan: {
+    localMsgAviso: { //"dm" == true || "chat" == false
         type: Boolean,
         required: false,
         default: false
