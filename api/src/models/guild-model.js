@@ -28,17 +28,17 @@ const schema = new Schema({
     numMute: {
         type: Number,
         required: false,
-        default: 3
+        default: 0
     },
     numKick: {
         type: Number,
         required: false,
-        default: 5
+        default: 0
     },
     numBan: {
         type: Number,
         required: false,
-        default: 12
+        default: 0
     },
     tempoMute: { //segundos
         type: Number,
@@ -89,6 +89,11 @@ const schema = new Schema({
         type: Boolean,
         required: false,
         default: false
+    },
+    nomeAutoRole: {
+        type: String,
+        required: false,
+        default: ""
     },
     tempoAutoRole: {
         type: Number,

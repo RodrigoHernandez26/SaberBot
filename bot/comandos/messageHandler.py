@@ -2,6 +2,7 @@ import yaml, requests, discord
 from settings.db_commands import mysql_command
 from comandos.commandManager import manager
 from datetime import datetime, timedelta
+from contextlib import suppress
 
 from misc.embeds_moderation import comandos_error_dm, comandos_error_channel, embed_banWord, embed_flood, embed_link, embed_spamcaps, embed_mute, tempo_mute, dm_kick, dm_ban
 
@@ -13,6 +14,7 @@ from comandos.moderacao.spamcaps import spamcaps
 class Handler():
 
     with open('./bot/settings/settings.yaml', 'r') as f: data = yaml.load(f, Loader= yaml.FullLoader)
+    uri = data['URI_API']
     token = data['TOKEN_JWT']
     
     @classmethod
@@ -22,7 +24,7 @@ class Handler():
             "guildID": str(ctx.guild.id)
         }
 
-        data = requests.post('http://localhost:3000/guild/get', json= payload).json()[0]
+        data = requests.post(f'{cls.uri}/guild/get', json= payload).json()[0]
         return data
 
     @classmethod
@@ -42,7 +44,7 @@ class Handler():
         mysql_command(f"insert into {table} (server, user, expires) value ({guild}, {user}, now() + interval {tempo} {intervalo})")
 
     @classmethod
-    def verificaAviso(cls, guild, user, numMute, numKick, numBan):
+    def verificaAviso(cls, guild, user):
         data = list(mysql_command(f"select * from aviso where server = {guild} and user = {user}", True))
 
         removed = False
@@ -165,37 +167,26 @@ class Handler():
             if deletar:
                 await ctx.delete()      
 
-        numAvisos = cls.verificaAviso(ctx.guild.id, ctx.author.id, data['numMute'], data['numKick'], data['numBan'])
+        numAvisos = cls.verificaAviso(ctx.guild.id, ctx.author.id)
 
         if numAvisos != 0:    
-            if numAvisos >= data['numMute'] and numAvisos < data['numKick']:
+            if numAvisos >= data['numMute'] and numAvisos < data['numKick'] and data['numMute'] != 0:
                 cls.adicionaAvisoMute(ctx.guild.id, ctx.author.id, data['tempoMute'], 'mute')
                 await ctx.author.send(embed = embed_mute(data['tempoMute']))
 
-            elif numAvisos >= data['numKick'] and numAvisos < data['numban']:
+            elif numAvisos >= data['numKick'] and numAvisos < data['numBan'] and data['numKick'] != 0:
                 await ctx.guild.kick(ctx.author, reason= f'Atingiu um total de {data["numKick"]} avisos')
                 await ctx.author.send(emebd = dm_kick(ctx.guild.name, data['numKick']))
 
-            elif numAvisos >= data['numBan']:
+            elif numAvisos >= data['numBan'] and data['numBan'] != 0:
                 await ctx.guild.ban(ctx.author, reason= f'Atingiu um total de {data["numBan"]} avisos', delete_message_days= 7)
                 await ctx.author.send(embed = dm_ban(ctx.guild.name, data['numBan']))
 
-        try:
+        with suppress(Exception):
             await msgBanWord.edit(embed = embed_banWord(banWord, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))
-        except:
-            pass
-
-        try:
+        with suppress(Exception):
             await msgFlood.edit(embed = embed_flood(floodword, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))
-        except:
-            pass
-
-        try:
-            await msgLink.edit(embed = embed_link(urls, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))
-        except:
-            pass
-            
-        try:
+        with suppress(Exception):
+            await msgLink.edit(embed = embed_link(urls, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))                  
+        with suppress(Exception):
             await msgSpam.edit(embed = embed_spamcaps(ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))
-        except:
-            pass

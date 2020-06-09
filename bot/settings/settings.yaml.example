@@ -13,8 +13,9 @@ LIM_QNT:  #Limite da quantidade de dados
 
 LIM_DADO:  #Limite do número de lados do dado
 
-#API SaberBot - Token que não expira e será usado apenas no bot
-TOKEN_JWT: 
+#API do SaberBot
+URI_API:
+TOKEN_JWT: #Token que não expira e será usado apenas pelo bot 
 
 #API do https://api.random.org
 RNG_KEY: 

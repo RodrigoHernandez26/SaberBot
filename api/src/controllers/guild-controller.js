@@ -49,14 +49,14 @@ exports.postGuild = (req, res, next) => {
     });
 };
 
-// exports.putGuild = (req, res, next) => {
-//     Guild.replaceOne({guildID: req.body.guildID}, req.body)
-//     .then(data => {
-//         res.status(200).send({ message: "Server atualizado com sucesso!", data: req.body});
-//     }).catch(e => {
-//         res.status(400).send(e);
-//     })
-// };
+exports.putGuild = (req, res, next) => {
+    Guild.replaceOne({guildID: req.body.guildID}, req.body)
+    .then(data => {
+        res.status(200).send({ message: "Server atualizado com sucesso!", data: req.body});
+    }).catch(e => {
+        res.status(400).send(e);
+    })
+};
 
 exports.deleteGuild = (req, res, next) => {
     Guild.deleteOne({guildID: req.body.guildID})

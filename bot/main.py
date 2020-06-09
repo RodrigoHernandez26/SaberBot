@@ -33,6 +33,7 @@ from datetime import datetime
 from settings.db_commands import connect
 from comandos.messageHandler import Handler
 from comandos.rpg.dado import dado
+from misc import autoRole
 
 global client
 client = discord.Client()
@@ -53,14 +54,19 @@ async def on_guild_join(guild):
         "comandos": ['add'],
         "chatsDisable": ['678697096454471713'],
         "chatsDisableMsg": True,
+        "numMute": 3,
+        "numKick": 5,
+        "numBan": 7,
         "banWords": True,
         "banWordsList": ['teste', 'teste2'],
         "flood": True,
         "link": True,
         "linkList": ['https://www.google.com.br', 'https://www.youtube.com'],
         "spamcaps": True,
-        "tempoAutoRole": 10
+        "nomeAutoRole": 'cargo',
+        "tempoAutoRole": 5
     }
+    
     requests.post('http://localhost:3000/guild/sign', json= payload)
 
 @client.event
@@ -88,5 +94,9 @@ async def on_ready():
 async def on_message(ctx):
     await dado(ctx)
     await Handler.filter(ctx, client)
+
+@client.event
+async def on_member_join(member):
+    await autoRole.autoRole(member)
 
 client.run(data['TOKEN_DISCORD'])

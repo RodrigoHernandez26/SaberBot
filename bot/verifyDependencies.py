@@ -41,6 +41,7 @@ class Verify():
             assert data['LIM_MULT'] != None
             assert data['LIM_QNT'] != None
             assert data['LIM_DADO'] != None
+            assert data['URI_API'] != None
             assert data['TOKEN_JWT'] != None
             assert data['RNG_KEY'] != None
             assert data['RNG_ID'] != None

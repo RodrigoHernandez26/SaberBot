@@ -7,7 +7,7 @@ const authService = require('../services/auth-sevice');
 router.post('/guild/data', authService.authorize, controller.getGuilds)
 router.post('/guild/get', authService.authorize, controller.guildid)
 router.post('/guild/sign', authService.authorize, controller.postGuild)
-// router.put('/guild', authService.authorize, controller.putGuild)
+router.put('/guild/update', authService.authorize, controller.putGuild)
 router.delete('/guild/delete', authService.authorize, controller.deleteGuild)
 router.post('/token', controller.postToken)
 router.post('/data', authService.authorize, controller.postData)
