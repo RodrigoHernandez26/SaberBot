@@ -35,6 +35,11 @@ const schema = new Schema({
         required: false,
         default: 0
     },
+    numSoftBan: {
+        type: Number,
+        required: false,
+        default: 0
+    },
     numBan: {
         type: Number,
         required: false,

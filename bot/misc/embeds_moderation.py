@@ -87,6 +87,12 @@ def dm_kick(guild, numKick):
         color = 0xff0000
     )
 
+def dm_softban(guild, numSoftBan):
+    return discord.Embed(
+        title = f'Você tomou um SoftBan no **{guild}** por atingir `{numSoftBan} avisos.`',
+        color = 0xff0000
+    )
+
 def dm_ban(guild, numBan, tempo = 0): #por enquanto todos são permanentes
     embed = discord.Embed(
         title = f'Você foi banido do **{guild}** por atingir `{numBan}` avisos.',

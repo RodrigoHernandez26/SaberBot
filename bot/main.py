@@ -41,6 +41,9 @@ with open('./bot/settings/settings.yaml', 'r') as f: data = yaml.load(f, Loader=
 
 @client.event
 async def on_guild_join(guild):
+
+    with open('./bot/settings/settings.yaml', 'r') as f: data = yaml.load(f, Loader= yaml.FullLoader)
+
     # real payload
     # payload = {
     #     "x-access-token": data['TOKEN_JWT'],
@@ -56,10 +59,12 @@ async def on_guild_join(guild):
         "chatsDisableMsg": True,
         "numMute": 3,
         "numKick": 5,
-        "numBan": 7,
+        "numSoftBan": 7,
+        "numBan": 10,
         "banWords": True,
         "banWordsList": ['teste', 'teste2'],
         "flood": True,
+        "tempoMute": 5,
         "link": True,
         "linkList": ['https://www.google.com.br', 'https://www.youtube.com'],
         "spamcaps": True,
@@ -67,15 +72,18 @@ async def on_guild_join(guild):
         "tempoAutoRole": 5
     }
     
-    requests.post('http://localhost:3000/guild/sign', json= payload)
+    requests.post(f'{data["URI_API"]}/guild/sign', json= payload)
 
 @client.event
 async def on_guild_remove(guild):
+
+    with open('./bot/settings/settings.yaml', 'r') as f: data = yaml.load(f, Loader= yaml.FullLoader)
+
     payload = {
         "x-access-token": data['TOKEN_JWT'],
         "guildID": str(guild.id)
     }
-    requests.delete('http://localhost:3000/guild/delete', json= payload)
+    requests.delete(f'{data["URI_API"]}/guild/delete', json= payload)
 
 @client.event
 async def on_ready():
