@@ -45,7 +45,7 @@ const schema = new Schema({
         required: false,
         default: 0
     },
-    tempoMute: { //segundos
+    tempoMute: { //segundos || 0 == 'perma
         type: Number,
         required: false,
         default: 3600

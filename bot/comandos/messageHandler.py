@@ -4,7 +4,7 @@ from comandos.commandManager import manager
 from datetime import datetime, timedelta
 from contextlib import suppress
 
-from misc.embeds_moderation import comandos_error_dm, comandos_error_channel, embed_banWord, embed_flood, embed_link, embed_spamcaps, embed_mute, tempo_mute, dm_kick, dm_ban, dm_softban
+from misc.embeds_moderation import comandos_error_dm, comandos_error_channel, embed_banWord, embed_flood, embed_link, embed_spamcaps, embed_mute, tempo_mute, dm_kick, dm_ban, dm_softban, mute_perma
 
 from comandos.moderacao.banwords import banWords
 from comandos.moderacao.flood import flood
@@ -29,6 +29,11 @@ class Handler():
 
     @classmethod
     def adicionaAvisoMute(cls, guild, user, tempo, table):
+
+        if tempo == 0:
+            mysql_command(f"insert into {table} (server, user, expires) value ({guild}, {user}, 0)")
+            return
+
         intervalo = 0
         if tempo // 3600:
             tempo //= 3600
@@ -65,6 +70,9 @@ class Handler():
         if len(mute) != 0:
             mute = mute[0]
 
+            if mute['expires'] == None:
+                return None
+
             if mute['expires'] < datetime.today():
                 mysql_command(f"delete from mute where id = {mute['id']}")
                 return False
@@ -85,6 +93,11 @@ class Handler():
         if mute:
             await ctx.delete()
             await ctx.author.send(embed= tempo_mute(ctx.guild.name, mute))
+            return
+
+        elif mute == None:
+            await ctx.delete()
+            await ctx.author.send(embed= mute_perma(ctx.guild.name))
             return
 
         data = cls.getData(ctx)
@@ -133,9 +146,9 @@ class Handler():
                 if banWord:
                     penalidade = True
                     if data['localMsgAviso']:
-                        msgBanWord = await ctx.author.send(embed= embed_banWord(banWord, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan']))
+                        msgBanWord = await ctx.author.send(embed= embed_banWord(banWord, ctx.author.name, ctx.guild.name))
                     else:
-                        msgBanWord = await ctx.channel.send(embed= embed_banWord(banWord, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan']))
+                        msgBanWord = await ctx.channel.send(embed= embed_banWord(banWord, ctx.author.name, ctx.guild.name))
                     cls.adicionaAvisoMute(ctx.guild.id, ctx.author.id, data['tempoAviso'], 'aviso')
             
             # Flood
@@ -144,9 +157,9 @@ class Handler():
                 if floodword:
                     penalidade = True
                     if data['localMsgAviso']:
-                        msgFlood = await ctx.author.send(embed= embed_flood(floodword, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan']))
+                        msgFlood = await ctx.author.send(embed= embed_flood(floodword, ctx.author.name, ctx.guild.name))
                     else:
-                        msgFlood = await ctx.channel.send(embed= embed_flood(floodword, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan']))
+                        msgFlood = await ctx.channel.send(embed= embed_flood(floodword, ctx.author.name, ctx.guild.name))
                     cls.adicionaAvisoMute(ctx.guild.id, ctx.author.id, data['tempoAviso'], 'aviso')
 
             # Link proibido
@@ -155,9 +168,9 @@ class Handler():
                 if urls:
                     penalidade = True
                     if data['localMsgAviso']:
-                        msgLink = await ctx.author.send(embed= embed_link(urls, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan']))
+                        msgLink = await ctx.author.send(embed= embed_link(urls, ctx.author.name, ctx.guild.name))
                     else:
-                        msgLink = await ctx.channel.send(embed= embed_link(urls, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan']))
+                        msgLink = await ctx.channel.send(embed= embed_link(urls, ctx.author.name, ctx.guild.name))
                     cls.adicionaAvisoMute(ctx.guild.id, ctx.author.id, data['tempoAviso'], 'aviso')
          
             # Spam de CAPS
@@ -166,9 +179,9 @@ class Handler():
                 if spam:
                     penalidade = True
                     if data['localMsgAviso']:
-                        msgSpam = await ctx.author.send(embed= embed_spamcaps(ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan']))
+                        msgSpam = await ctx.author.send(embed= embed_spamcaps(ctx.author.name, ctx.guild.name))
                     else:
-                        msgSpam = await ctx.channel.send(embed= embed_spamcaps(ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan']))
+                        msgSpam = await ctx.channel.send(embed= embed_spamcaps(ctx.author.name, ctx.guild.name))
                     cls.adicionaAvisoMute(ctx.guild.id, ctx.author.id, data['tempoAviso'], 'aviso')
 
             # Verifica se a mensagem vai ser deletada
@@ -199,14 +212,14 @@ class Handler():
             # MUTE
             if numAvisos >= data['numMute'] and data['numMute']:
                 cls.adicionaAvisoMute(ctx.guild.id, ctx.author.id, data['tempoMute'], 'mute')
-                await ctx.author.send(embed= embed_mute(data['tempoMute']))
+                await ctx.author.send(embed= embed_mute(ctx.guild.name, data['tempoMute']))
    
         # Adiciona o numero de avisos na mensagem da penalidade
         with suppress(Exception):
-            await msgBanWord.edit(embed= embed_banWord(banWord, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))
+            await msgBanWord.edit(embed= embed_banWord(banWord, ctx.author.name, ctx.guild.name, numAvisos))
         with suppress(Exception):
-            await msgFlood.edit(embed= embed_flood(floodword, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))
+            await msgFlood.edit(embed= embed_flood(floodword, ctx.author.name, ctx.guild.name, numAvisos))
         with suppress(Exception):
-            await msgLink.edit(embed= embed_link(urls, ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))                  
+            await msgLink.edit(embed= embed_link(urls, ctx.author.name, ctx.guild.name, numAvisos))                  
         with suppress(Exception):
-            await msgSpam.edit(embed= embed_spamcaps(ctx.author.name, ctx.guild.name, data['numMute'], data['numKick'], data['numBan'], numAvisos))
+            await msgSpam.edit(embed= embed_spamcaps(ctx.author.name, ctx.guild.name, numAvisos))

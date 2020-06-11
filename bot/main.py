@@ -64,7 +64,7 @@ async def on_guild_join(guild):
         "banWords": True,
         "banWordsList": ['teste', 'teste2'],
         "flood": True,
-        "tempoMute": 5,
+        "tempoMute": 0,
         "link": True,
         "linkList": ['https://www.google.com.br', 'https://www.youtube.com'],
         "spamcaps": True,
